@@ -1,0 +1,34 @@
+# Week alarm
+- alias: alarmclock_week
+  trigger:
+    - platform: template
+      value_template: "{{ (states('sensor.time') == ((state_attr('input_datetime.alarmclock_week','timestamp') - 60*15) | timestamp_custom('%H:%M',false))) }}"
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    - service: script.alarmclock
+
+# Weekend alarm
+- alias: alarmclock_weekend
+  trigger:
+    - platform: template
+      value_template: "{{ (states('sensor.time') == ((state_attr('input_datetime.alarmclock_weekend','timestamp') - 60*15) | timestamp_custom('%H:%M',false))) }}"
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: time
+      weekday:
+        - sat
+        - sun
+  action:
+    - service: script.alarmclock

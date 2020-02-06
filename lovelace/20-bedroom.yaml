@@ -1,0 +1,66 @@
+- title: Chambre
+  icon: mdi:bed-king
+  path: bedroom
+  cards:
+
+    # Lights + scenes buttons
+    - type: vertical-stack
+      cards:
+        - type: light
+          entity: light.bedroom
+        - type: horizontal-stack
+          cards:
+            - type: entity-button
+              entity: scene.bedroom_bright
+              show_name: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.bedroom_bright
+            - type: entity-button
+              entity: scene.bedroom_chill
+              show_name: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.bedroom_chill
+            - type: entity-button
+              entity: scene.bedroom_night
+              show_name: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.bedroom_night
+        - type: entities
+          entities:
+            - type: 'custom:slider-entity-row'
+              entity: light.bedroom_floor
+              toggle: true
+
+    # Media players
+    - type: vertical-stack
+      cards:
+      - type: 'custom:mini-media-player'
+        entity: media_player.bedroom_mibox
+        artwork: cover
+        shortcuts:
+          buttons:
+            - type: script
+              name: Classic 21
+              image: /local/classic21.png
+              id: script.play_classic21
+              data:
+                entity_id: media_player.bedroom_mibox
+    
+    # Alarm clock
+    - type: entities
+      title: Réveil matin
+      show_header_toggle: false
+      entities:
+        - automation.alarmclock_week
+        - input_datetime.alarmclock_week
+        - automation.alarmclock_weekend
+        - input_datetime.alarmclock_weekend

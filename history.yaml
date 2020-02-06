@@ -1,0 +1,29 @@
+# TODO
+# include:
+#   entities:
+#     - light.chambre
+#     - light.salon
+#     - sensor.speedtest_download
+#     - sensor.speedtest_upload
+#     - sensor.speedtest_ping
+#     - sensor.processor_use
+#     - sensor.memory_use_percent
+#     - sensor.disk_use_percent
+# exclude:
+#   domains:
+#     - automation
+#     - device_tracker
+#     - calendar
+#     - group
+#     - sensor
+#     - input_boolean
+#     - input_datetime
+#     - script
+#   entities:
+#     - media_player.mini_chambre
+#     - media_player.mini_salon
+#     - light.pied_bureau
+#     - light.pied_chambre
+#     - light.pied_salon
+#     - light.plafond_bureau
+#     - light.plafond_salon

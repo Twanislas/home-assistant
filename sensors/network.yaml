@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    ping_internet:
+      friendly_name: Internet ping
+      unit_of_measurement: ms
+      value_template: "{{ state_attr('binary_sensor.ping_internet', 'round_trip_time_avg') }}"
+      icon_template: mdi:wan
+
+# TODO: SNMP for wan interface stats
+# TODO: SNMP for network devices stats

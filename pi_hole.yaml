@@ -1,0 +1,6 @@
+- host: pihole01.i
+  name: PiHole 01
+  api_key: !secret pihole_api_key
+- host: pihole02.i
+  name: PiHole 02
+  api_key: !secret pihole_api_key

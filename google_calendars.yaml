@@ -1,0 +1,58 @@
+# Antoine
+- cal_id: !secret google_calendar_twan
+  entities:
+  - device_id: twan
+    ignore_availability: true
+    name: Twan
+    track: true
+
+# Caro
+- cal_id: !secret google_calendar_caro
+  entities:
+  - device_id: caro
+    ignore_availability: true
+    name: Caro
+    track: true
+
+# CaroTwan
+- cal_id: !secret google_calendar_carotwan
+  entities:
+  - device_id: carotwan
+    ignore_availability: true
+    name: CaroTwan
+    track: true
+
+# Belgian holidays
+- cal_id: fr.be#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays
+    ignore_availability: true
+    name: "Jours fériés"
+    track: true
+
+# Trash
+- cal_id: !secret google_calendar_trash
+  entities:
+  - device_id: trash
+    ignore_availability: true
+    name: Poubelles
+    track: false
+
+# Contacts birthdays
+- cal_id: addressbook#contacts@group.v.calendar.google.com
+  entities:
+  - device_id: contacts
+    ignore_availability: true
+    name: Contacts
+    track: false
+
+# Local weather
+- cal_id: p#weather@group.v.calendar.google.com
+  entities:
+  - device_id: weather
+    ignore_availability: true
+    name: Weather
+    track: false
+
+# END OF STATIC CONFIGS
+# Newly discovered entries below

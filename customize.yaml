@@ -1,0 +1,149 @@
+# Automations
+automation.alarmclock_week:
+  friendly_name: Réveil semaine
+  icon: mdi:alarm-check
+automation.alarmclock_weekend:
+  friendly_name: Réveil weekend
+  icon: mdi:alarm-check
+automation.living_radio_auto_off:
+  friendly_name: Auto-off via TV
+  icon: mdi:auto-fix
+automation.presence_anyone_home:
+  friendly_name: Arrivée maison
+  icon: mdi:home-import-outline
+automation.presence_everyone_left:
+  friendly_name: Départ maison
+  icon: mdi:home-export-outline
+automation.presence_antoine_left_work:
+  friendly_name: Antoine quitte le travail
+automation.presence_caro_left_work:
+  friendly_name: Caro quitte les cours
+
+# Climate
+climate.living_thermostat:
+  friendly_name: Salon
+  icon: mdi:thermostat
+
+# Device trackers
+device_tracker.unifi_twanphone:
+  icon: mdi:cellphone-android
+device_tracker.app_twanphone:
+  icon: mdi:cellphone-android
+device_tracker.unifi_carophone:
+  icon: mdi:cellphone-iphone
+device_tracker.app_carophone:
+  icon: mdi:cellphone-iphone
+
+# Lights - groups
+light.hall:
+  friendly_name: Couloir
+  icon: mdi:stairs
+light.bedroom:
+  friendly_name: Chambre
+  icon: mdi:bed-king
+light.living:
+  friendly_name: Living
+  icon: mdi:sofa
+
+# Lights - individual
+light.bedroom_floor:
+  icon: mdi:floor-lamp
+light.hall0_ceiling_1:
+  icon: mdi:ceiling-light
+light.hall0_ceiling_2:
+  icon: mdi:ceiling-light
+light.hall1_ceiling:
+  icon: mdi:ceiling-light
+light.living_desk_ceiling:
+  icon: mdi:ceiling-light
+light.living_desk_floor:
+  icon: mdi:floor-lamp
+light.living_sofa_ceiling:
+  icon: mdi:ceiling-light
+light.living_sofa_floor:
+  icon: mdi:floor-lamp
+
+# Persons
+person.antoine:
+  entity_picture: /local/twan.jpg
+person.caroline:
+  entity_picture: /local/caro.jpg
+
+# Scenes
+scene.living_bright:
+  friendly_name: Lumineux
+  icon: mdi:lightbulb-on
+scene.living_cinema:
+  friendly_name: Cinéma
+  icon: mdi:theater
+scene.living_chill:
+  friendly_name: Détente
+  icon: mdi:seat-recline-extra
+scene.living_night:
+  friendly_name: Veilleuse
+  icon: mdi:weather-night
+scene.bedroom_bright:
+  friendly_name: Lumineux
+  icon: mdi:lightbulb-on
+scene.bedroom_chill:
+  friendly_name: Détente
+  icon: mdi:seat-recline-extra
+scene.bedroom_night:
+  friendly_name: Veilleuse
+  icon: mdi:weather-night
+
+# Scripts
+script.alarmclock:
+  friendly_name: Réveil matin
+  icon: mdi:weather-sunset-up
+script.bedroom_going_downstairs:
+  friendly_name: Routine on descend
+script.bedroom_sunset_lights:
+  friendly_name: Coucher de soleil
+  icon: mdi:weather-sunset-down
+script.living_going_to_bed:
+  friendly_name: Routine on monte
+
+# Sensors
+binary_sensor.hall0_modect1_motion:
+  device_class: motion
+binary_sensor.hall1_modect1_motion:
+  device_class: motion
+sensor.1stfloor_temperature:
+  friendly_name: Température étage
+  icon: mdi:home-floor-1
+sensor.groundfloor_temperature:
+  friendly_name: Température RDC
+  icon: mdi:home-floor-0
+sensor.hall0_modect1_temperature_raw:
+  hidden: true
+sensor.hall1_modect1_temperature_raw:
+  hidden: true
+sensor.kitchen_plug_frigo_energy:
+  device_class: power
+sensor.kitchen_plug_frigo_power:
+  device_class: power
+sensor.moon:
+  friendly_name: Lune
+sensor.seventeentrack_packages_delivered:
+  friendly_name: Colis livrés
+  unit_of_measurement: colis
+sensor.seventeentrack_packages_in_transit:
+  friendly_name: Colis en transit
+  unit_of_measurement: colis
+
+# Switches
+switch.office_twan_pc:
+  friendly_name: Twan-PC
+  icon: mdi:desktop-tower-monitor
+switch.office_caro_pc:
+  friendly_name: Caro-PC
+  icon: mdi:desktop-tower-monitor
+
+# Zones
+zone.caro_work:
+  friendly_name: CMAH
+  icon: mdi:school
+zone.twan_work:
+  friendly_name: Travail
+  icon: mdi:briefcase

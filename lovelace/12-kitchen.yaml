@@ -1,0 +1,11 @@
+- title: Cuisine
+  icon: mdi:stove
+  path: kitchen
+  cards:
+
+  - type: entities
+    entities:
+      - zwave.kitchen_plug_frigo
+      - switch.kitchen_plug_frigo_switch
+      - sensor.kitchen_plug_frigo_power
+      - sensor.kitchen_plug_frigo_energy

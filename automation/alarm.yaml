@@ -1,0 +1,77 @@
+# - alias: 'Trigger alarm while armed away'
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.capteur_couloir_bas_motion
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.capteur_couloir_haut_motion
+#       to: 'on'
+#   condition:
+#     - condition: state
+#       entity_id: alarm_control_panel.alarme
+#       state: armed_away
+#   action:
+#     service: alarm_control_panel.alarm_trigger
+#     entity_id: alarm_control_panel.alarme
+
+# - alias: 'Send notification when alarm triggered'
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.alarme
+#       to: 'triggered'
+#   action:
+#     - service: notify.all
+#       data:
+#         message: "ALARME DELENCHEE !!!"
+#     - service: tts.google_cloud_say
+#       entity_id: group.all_tts
+#       data:
+#         message: "ALARME CA VA EXPLOSER !"
+#     # Add lights alert
+#     # Make phones ring ?
+
+# - alias: 'Warn about alarm about to trigger'
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.alarme
+#       from: 'arm_away'
+#       to: 'pending'
+#   action:
+#     - service: tts.google_cloud_say
+#       entity_id: group.all_tts
+#       data:
+#         message: "Attention ! L'alarme se déclenchera dans une minute !"
+
+# - alias: 'Warn about alarm about to arm'
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.alarme
+#       from: 'disarmed'
+#       to: 'pending'
+#   action:
+#     - service: tts.google_cloud_say
+#       entity_id: group.all_tts
+#       data:
+#         message: "Attention ! L'alarme va s'armer dans une minute !"
+
+# - alias: 'Warn about alarm is armed'
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.alarme
+#       to: 'armed_away'
+#   action:
+#     - service: tts.google_cloud_say
+#       entity_id: group.all_tts
+#       data:
+#         message: "Attention ! L'alarme est activée !"
+
+# - alias: 'Warn about alarm is disarmed'
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.alarme
+#       to: 'disarmed'
+#   action:
+#     - service: tts.google_cloud_say
+#       entity_id: group.all_tts
+#       data:
+#         message: "Attention ! L'alarme est désactivée !"

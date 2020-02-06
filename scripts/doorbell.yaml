@@ -1,0 +1,15 @@
+doorbell_ring:
+  alias: Sonette
+  description: Fait sonner la sonette
+  sequence:
+    - service: script.tts_notify
+      data:
+        entity_id: group.all_tts
+        message: Quelqu'un sonne a la porte !
+    - service: notify.all
+      data:
+        title: Sonette
+        message: Quelqu'un sonne a la porte !
+        data:
+          ttl: 0
+          priority: high

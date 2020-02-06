@@ -1,0 +1,17 @@
+- alias: "System - Let's Encrypt Renewal"
+  trigger:
+    platform: time
+    at: '01:25:00'
+  action:
+    - service: hassio.addon_restart
+      data:
+        addon: core_letsencrypt
+
+- alias: 'System - Set custom theme at startup'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: slate

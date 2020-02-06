@@ -1,0 +1,33 @@
+- platform: time_date
+  display_options:
+    - time
+    - date
+    - date_time
+
+- platform: uptime
+  name: HASS Uptime
+  unit_of_measurement: hours
+
+- platform: websocket_api
+
+- platform: moon
+- platform: season
+- platform: template
+  sensors:
+    sun_elevation:
+      friendly_name: Sun elevation # TODO: Customize
+      unit_of_measurement: °
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+
+- platform: seventeentrack
+  username: !secret 17track_email
+  password: !secret 17track_password
+
+# Tautulli
+# TODO: SSL verification of Let's Encrypt fails somehow
+# - platform: tautulli
+#   api_key: !secret tautulli_api_key
+#   host: !secret tautulli_host
+#   port: 443
+#   path: /plexpy
+#   ssl: true

@@ -1,0 +1,8 @@
+home:
+  ignored_zones:
+    - Travail
+    - CMAH
+  devices:
+    - person.antoine
+    - person.caroline
+  tolerance: 100

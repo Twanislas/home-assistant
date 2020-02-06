@@ -1,0 +1,111 @@
+- title: Home
+  icon: mdi:castle
+  path: home
+  cards:
+
+    # Lights
+    - type: horizontal-stack
+      cards:
+      - type: entity-button
+        entity: light.living
+        hold_action:
+          action: navigate
+          navigation_path: /lovelace/living
+      - type: entity-button
+        entity: light.bedroom
+        hold_action:
+          action: navigate
+          navigation_path: /lovelace/bedroom
+
+    # Playing media players
+    - type: vertical-stack
+      cards:
+        - type: entity-filter
+          show_empty: false
+          state_filter:
+            - playing
+            - paused
+            - idle
+          entities:
+            - type: 'custom:mini-media-player'
+              entity: media_player.living_cca_radio
+              artwork: cover
+              group: true
+              hide:
+                power_state: false
+                source: true
+                volume: true
+            - type: 'custom:mini-media-player'
+              entity: media_player.living_mibox
+              artwork: cover
+              group: true
+              hide:
+                power_state: false
+                source: true
+                volume: true
+            - type: 'custom:mini-media-player'
+              entity: media_player.bedroom_mibox
+              artwork: cover
+              group: true
+              hide:
+                power_state: false
+                source: true
+                volume: true
+    
+    # Package tracking
+    - type: entity-filter
+      show_empty: false
+      state_filter:
+        - operator: '>'
+          value: '0'
+      entities:
+        - entity: sensor.seventeentrack_packages_delivered
+          secondary_info: last-changed
+        - entity: sensor.seventeentrack_packages_in_transit
+          secondary_info: last-changed
+    
+    # Climate
+    - type: vertical-stack
+      cards:
+        - type: 'custom:simple-weather-card'
+          entity: weather.dark_sky
+          name: ' '
+        - type: 'custom:simple-thermostat'
+          entity: climate.living_thermostat
+          name: Thermostat
+          icon: mdi:home-thermometer-outline
+          hide:
+            temperature: true
+          label:
+            state: État
+          sensors:
+            - entity: sensor.house_temperature
+              name: T° moy.
+              unit: °C
+            - attribute: battery_level
+              name: Batterie
+              unit: ' %'
+          control:
+            hvac:
+              'off': true
+              heat: false
+              auto: true
+            preset:
+              away:
+                icon: mdi:home-export-outline
+              boost: false
+              'Frost Guard':
+                name: Hors gel
+                icon: mdi:snowflake
+              Schedule:
+                name: Programme
+                icon: mdi:calendar-repeat
+    
+    # Trash
+    - type: glance
+      entities:
+        - entity: sensor.trash_normal
+        - entity: sensor.trash_pmc
+        - entity: sensor.trash_cartons
+      show_name: false
+      title: Poubelles

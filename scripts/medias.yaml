@@ -1,0 +1,53 @@
+play_classic21:
+  alias: Play Classic21
+  description: Plays Classic21 on a media_player device
+  fields:
+    entity_id:
+      description: Target device
+      example: media_player.radio
+  sequence:
+    - service: media_player.play_media
+      data_template:
+        entity_id: "{{ entity_id }}"
+        media_content_id: https://radios.rtbf.be/classic21-128.mp3
+        media_content_type: music
+
+androidtv_launch_app:
+  alias: Android TV Launch app
+  description: Launches an app on an Android TV device, also quits backdrop
+  fields:
+    entity_id:
+      description: Target entity id
+      example: media_player.living_room
+    app:
+      description: App to launch
+      example: com.netflix.ninja/.MainActivity
+  sequence:
+  - service: androidtv.adb_command
+    data_template:
+      entity_id: "{{ entity_id }}"
+      command: "am start -n {{ app }}"
+  - service: androidtv.adb_command
+    data_template:
+      entity_id: "{{ entity_id }}"
+      command: "RESUME"
+
+tts_notify:
+  alias: TTS Notification
+  description: Notify using TTS
+  fields:
+    entity_id:
+      description: Target entity id
+      example: media_player.google_mini
+    message:
+      description: Message to say
+      example: Robert arrived home
+  sequence:
+  - service: media_player.volume_set
+    data_template:
+      entity_id: "{{ entity_id }}"
+      volume_level: 0.3
+  - service: tts.google_cloud_say
+    data_template:
+      entity_id: "{{ entity_id }}"
+      message: "{{ message }}"

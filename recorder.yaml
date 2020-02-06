@@ -1,0 +1,5 @@
+purge_keep_days: 3
+exclude:
+  entities:
+    - sensor.date_time
+    - sensor.time

@@ -1,0 +1,97 @@
+- title: Climat
+  icon: mdi:home-thermometer
+  path: climate
+  cards:
+    - type: 'custom:weather-card'
+      entity: weather.dark_sky
+    - type: entities
+      entities:
+        - entity: sensor.moon
+      show_header_toggle: false
+    - type: vertical-stack
+      cards:
+        - type: 'custom:simple-thermostat'
+          entity: climate.living_thermostat
+          name: Chauffage
+          icon: mdi:home-thermometer-outline
+          hide:
+            temperature: true
+          label:
+            state: État
+          sensors:
+            - entity: sensor.house_temperature
+              name: T° moy.
+              unit: °C
+            - attribute: battery_level
+              name: Batterie
+              unit: ' %'
+          control:
+            hvac:
+              'off': true
+              heat: false
+              auto: true
+            preset:
+              away:
+                icon: mdi:home-export-outline
+              boost: false
+              'Frost Guard':
+                name: Hors gel
+                icon: mdi:snowflake
+              Schedule:
+                name: Programme
+                icon: mdi:calendar-repeat
+        - type: 'custom:mini-graph-card'
+          hour24: true
+          points_per_hour: 2
+          line_width: 4
+          show:
+            name: false
+            icon: false
+            state: false
+          entities:
+            - entity: sensor.house_temperature
+              show_graph: false
+            # - entity: sensor.basement_temperature
+            #   name: Cave
+            - entity: sensor.groundfloor_temperature
+              name: Rez de chaussée
+            - entity: sensor.1stfloor_temperature
+              name: Étage
+            - entity: sensor.sun_elevation
+              color: gray
+              show_line: false
+              show_points: false
+              show_legend: false
+              y_axis: secondary
+    - type: 'custom:mini-graph-card'
+      name: Rez de chaussee
+      hour24: true
+      points_per_hour: 2
+      entities:
+        - entity: sensor.groundfloor_temperature
+          show_graph: false
+        - entity: sensor.living_netatmo_temperature
+          name: Salon
+        - entity: sensor.hall0_modect1_temperature
+          name: Couloir
+        - entity: sensor.sun_elevation
+          color: gray
+          show_line: false
+          show_points: false
+          show_legend: false
+          y_axis: secondary
+    - type: 'custom:mini-graph-card'
+      name: Étage
+      hour24: true
+      points_per_hour: 2
+      entities:
+        - entity: sensor.1stfloor_temperature
+          show_graph: false
+        - entity: sensor.hall1_modect1_temperature
+          name: Couloir
+        - entity: sensor.sun_elevation
+          color: gray
+          show_line: false
+          show_points: false
+          show_legend: false
+          y_axis: secondary

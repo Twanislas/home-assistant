@@ -1,0 +1,9 @@
+- title: Bureau
+  icon: mdi:desk
+  path: office
+  cards:
+
+    - type: entities
+      entities:
+        - switch.office_twan_pc
+        - switch.office_caro_pc

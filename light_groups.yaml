@@ -1,0 +1,25 @@
+# Light groups
+
+# Chambre
+- platform: group
+  name: bedroom
+  entities:
+    - light.bedroom_floor
+
+# Couloir
+- platform: group
+  name: hall
+  entities:
+    - light.hall1_ceiling
+    - light.hall0_ceiling_1
+    - light.hall0_ceiling_2
+
+# Salon
+- platform: group
+  name: living
+  entities:
+    - light.living_desk_ceiling
+    - light.living_desk_floor
+    - light.living_sofa_ceiling
+    - light.living_sofa_floor
+    

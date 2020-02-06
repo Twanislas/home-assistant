@@ -1,0 +1,46 @@
+- title: Lumieres
+  icon: mdi:lightbulb
+  path: lights
+  cards:
+    - type: entities
+      entities:
+        - type: 'custom:fold-entity-row'
+          head:
+            type: 'custom:slider-entity-row'
+            entity: light.living
+            toggle: true
+          open: true
+          entities:
+            - type: 'custom:slider-entity-row'
+              entity: light.living_sofa_ceiling
+              toggle: true
+            - type: 'custom:slider-entity-row'
+              entity: light.living_sofa_floor
+              toggle: true
+            - type: 'custom:slider-entity-row'
+              entity: light.living_desk_ceiling
+              toggle: true
+            - type: 'custom:slider-entity-row'
+              entity: light.living_desk_floor
+              toggle: true
+        - type: 'custom:slider-entity-row'
+          entity: light.bedroom
+          toggle: true
+        - type: 'custom:slider-entity-row'
+          entity: light.hall
+          toggle: true
+    - type: horizontal-stack
+      cards:
+        - entities:
+            - sensor.hall0_modect1_lightlevel
+          line_width: 4
+          name: Couloir bas
+          points_per_hour: 1
+          type: 'custom:mini-graph-card'
+        - entities:
+            - sensor.hall1_modect1_lightlevel
+          line_width: 4
+          name: Couloir haut
+          points_per_hour: 1
+          type: 'custom:mini-graph-card'
+  

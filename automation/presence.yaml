@@ -1,0 +1,72 @@
+- alias: Presence - Everyone left
+  trigger:
+    platform: state
+    entity_id: group.all_persons
+    from: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: all
+    - service: media_player.turn_off
+      entity_id: group.all_media_players
+    # - service: alarm_control_panel.alarm_arm_away
+    #   entity_id: alarm_control_panel.alarme
+    #   data:
+    #     code: !secret alarm_code
+    - condition: template # Do not set heating away if it is in manual off
+      value_template: "{{ states('climate.living_thermostat') != 'off' }}"
+    - service: climate.set_preset_mode
+      data:
+        entity_id: all
+        preset_mode: away
+
+- alias: Presence - Anyone home
+  trigger:
+    platform: state
+    entity_id: group.all_persons
+    to: 'home'
+  action:
+    - service: light.turn_on
+      entity_id: light.living
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.living_cca_radio
+    # - service: alarm_control_panel.alarm_disarm
+    #   entity_id: alarm_control_panel.alarme
+    #   data:
+    #     code: !secret alarm_code
+    - condition: template # Do not turn on heating if it is in manual off
+      value_template: "{{ states('climate.living_thermostat') != 'off' }}"
+    - service: climate.set_preset_mode
+      data:
+        entity_id: all
+        preset_mode: Schedule
+
+- alias: Presence - Antoine left work
+  trigger:
+    platform: state
+    entity_id: person.antoine
+    from: 'Travail'
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+  action:
+    - service: script.tts_notify
+      data_template:
+        entity_id: group.all_tts
+        message: "Youpie ! Antoine vient de quitter le travail ! Il devrait arriver dans {{ states('sensor.waze_twan_to_home') | string }} minutes."
+
+- alias: Presence - Caro left work
+  trigger:
+    platform: state
+    entity_id: person.caroline
+    from: 'CMAH'
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+  action:
+    - service: script.tts_notify
+      data_template:
+        entity_id: group.all_tts
+        message: "Youpie ! Caro vient de quitter les cours ! Elle devrait arriver dans {{ states('sensor.waze_caro_to_home') | string }} minutes."

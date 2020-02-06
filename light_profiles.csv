@@ -1,0 +1,9 @@
+id,x,y,brightness
+light.living.default,0.457,0.41,254
+light.bedroom.default,0.457,0.41,254
+light.hall.default,0.457,0.41,254
+default,0.457,0.41,254
+bright,0.457,0.41,254
+chill,0.457,0.41,144
+evening,0.457,0.41,77
+night,0.561,0.404,1

@@ -1,0 +1,28 @@
+# Groups
+- name: all
+  platform: group
+  services:
+    - service: html5
+    - service: tv_salon
+    - service: mobile_app_iphone_de_caroline
+    - service: mobile_app_twan_phone
+
+# Services
+- name: html5
+  platform: html5
+  vapid_pub_key: !secret vapid_pub_key
+  vapid_prv_key: !secret vapid_prv_key
+  vapid_email: !secret vapid_email
+
+- name: telegram_group
+  platform: telegram
+  chat_id: !secret telegram_chatid
+
+- name: telegram_debug
+  platform: telegram
+  chat_id: !secret telegram_chatid_debug
+
+- name: tv_salon
+  platform: nfandroidtv
+  host: 10.0.6.4
+  duration: 15

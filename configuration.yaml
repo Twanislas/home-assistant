@@ -1,0 +1,129 @@
+homeassistant:
+  name: Home
+  latitude: !secret ha_latitude
+  longitude: !secret ha_longitude
+  elevation: !secret ha_elevation
+  unit_system: metric
+  time_zone: Europe/Brussels
+
+  customize: !include customize.yaml
+  customize_domain:
+    automation:
+      initial_state: 'on'
+
+  whitelist_external_dirs:
+    - /config/www
+
+http:
+  base_url: !secret ha_base_url
+  server_port: 443
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+lovelace:
+  mode: yaml
+
+# Help HASS team with some stats :)
+updater:
+  include_used_components: true
+
+# Mobile Apps integration
+
+
+# Scan the network for supported devices and services
+discovery:
+ssdp:
+zeroconf:
+
+# HASS components I use (because I disabled default_config:)
+config:
+frontend:
+  themes: !include_dir_merge_named themes
+map:
+mobile_app:
+person:
+stream:
+sun:
+system_health:
+wake_on_lan:
+
+apcupsd:
+  host: a722577e-apcupsd-net
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    mode: daily
+
+tts:
+  - platform: google_cloud
+    key_file: .storage/googlecloud.json
+    voice: fr-FR-Wavenet-C
+    encoding: mp3
+    profiles:
+      - small-bluetooth-speaker-class-device
+
+# Netatmo
+netatmo:
+  client_id: !secret netatmo_client_id
+  client_secret: !secret netatmo_client_secret
+
+# Google calendar
+google:
+  client_id: !secret google_calendar_id
+  client_secret: !secret google_calendar_secret
+  track_new_calendar: false
+
+# UniFi
+unifi:
+  controllers:
+    - host: !secret unifi_host
+      site: !secret unifi_site
+      ssid_filter:
+        - !secret unifi_ssid_home
+        - !secret unifi_ssid_iot
+
+# Alarm
+alarm_control_panel:
+  - platform: manual
+    name: Alarme
+    code: !secret alarm_code
+    delay_time: 60
+    pending_time: 30
+    trigger_time: 60
+    disarmed:
+      trigger_time: 0
+
+# Telegram
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chatid_debug
+      - !secret telegram_chatid
+
+# Includes
+automation: !include_dir_merge_list automation
+binary_sensor: !include_dir_merge_list sensors_binary
+camera: !include cameras.yaml
+cloud: !include cloud.yaml
+device_tracker: !include device_tracker.yaml
+group: !include groups.yaml
+history: !include history.yaml
+# input_boolean: !include inputs_boolean.yaml
+input_datetime: !include inputs_datetime.yaml
+input_select: !include inputs_select.yaml
+light: !include light_groups.yaml
+logbook: !include logbook.yaml
+media_player: !include media_players.yaml
+notify: !include notify.yaml
+pi_hole: !include pi_hole.yaml
+proximity: !include proximity.yaml
+recorder: !include recorder.yaml # TODO: refresh this to lower load on the system
+scene: !include scenes.yaml
+scene old: !include_dir_merge_list scenes
+script: !include_dir_merge_named scripts
+sensor: !include_dir_merge_list sensors
+switch: !include switches.yaml
+timer: !include timers.yaml
+zone: !include zones.yaml

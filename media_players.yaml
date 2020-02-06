@@ -1,0 +1,94 @@
+# TODO: Find a way to turn off but keep network up (deep sleep ?)
+- platform: androidtv
+  host: 10.0.6.4
+  name: "TV Salon"
+  adb_server_ip: 127.0.0.1
+  adb_server_port: 5037
+  apps:
+    com.google.android.tvlauncher: Android TV
+    com.netflix.ninja: Netflix
+    com.plexapp.android: Plex
+    be.voo.voomotion: VOOMotion
+    app.xeev.xeplayer: IPTV
+    com.google.android.youtube.tv: YouTube
+    com.google.android.apps.mediashell: Cast
+  state_detection_rules:
+    'com.google.android.tvlauncher':
+      - 'standby'
+    'com.google.android.apps.mediashell': # TODO: Make sure status is not "playing" when casting photos, not videos
+      - 'paused':
+          'media_session_state': 2
+      - 'playing':
+          'wake_lock_size': 3
+      - 'standby'
+    'com.netflix.ninja':
+      - 'media_session_state'
+    'com.plexapp.android':
+      - 'playing':
+          'media_session_state': 3
+          'wake_lock_size': 3
+      - 'paused':
+          'media_session_state': 3
+          'wake_lock_size': 1
+      - 'standby'
+    'be.voo.voomotion':
+      - 'playing':
+          'wake_lock_size': 3
+      - 'playing':
+          'wake_lock_size': 2
+      - 'standby'
+    'app.xeev.xeplayer':
+      - 'playing':
+          'wake_lock_size': 3
+      - 'paused':
+          'wake_lock_size': 2
+      - 'standby'
+    'com.google.android.youtube.tv':
+      - 'media_session_state'
+
+- platform: androidtv
+  host: 10.0.6.7
+  name: "TV Chambre"
+  adb_server_ip: 127.0.0.1
+  adb_server_port: 5037
+  apps:
+    com.google.android.tvlauncher: Android TV
+    com.netflix.ninja: Netflix
+    com.plexapp.android: Plex
+    be.voo.voomotion: VOOMotion
+    app.xeev.xeplayer: IPTV
+    com.google.android.youtube.tv: YouTube
+    com.google.android.apps.mediashell: Cast
+  state_detection_rules:
+    'com.google.android.tvlauncher':
+      - 'standby'
+    'com.google.android.apps.mediashell': # TODO: Make sure status is not "playing" when casting photos, not videos
+      - 'paused':
+          'media_session_state': 2
+      - 'playing':
+          'wake_lock_size': 3
+      - 'standby'
+    'com.netflix.ninja':
+      - 'media_session_state'
+    'com.plexapp.android':
+      - 'playing':
+          'media_session_state': 3
+          'wake_lock_size': 3
+      - 'paused':
+          'media_session_state': 3
+          'wake_lock_size': 1
+      - 'standby'
+    'be.voo.voomotion':
+      - 'playing':
+          'wake_lock_size': 3
+      - 'playing':
+          'wake_lock_size': 2
+      - 'standby'
+    'app.xeev.xeplayer':
+      - 'playing':
+          'wake_lock_size': 3
+      - 'paused':
+          'wake_lock_size': 2
+      - 'standby'
+    'com.google.android.youtube.tv':
+      - 'media_session_state'

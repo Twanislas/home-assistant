@@ -1,0 +1,28 @@
+- name: living_bright
+  entities:
+    light.living:
+      state: on
+      profile: bright
+
+- name: living_chill
+  entities:
+    light.living:
+      state: 'on'
+      profile: chill
+
+- name: living_cinema
+  entities:
+    light.living_sofa_ceiling: off
+    light.living_sofa_floor:
+      state: 'on'
+      profile: default
+    light.living_desk_ceiling: off
+    light.living_desk_floor:
+      state: 'on'
+      profile: default
+
+- name: living_night
+  entities:
+    light.living:
+      state: 'on'
+      profile: night

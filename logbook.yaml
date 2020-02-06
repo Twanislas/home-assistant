@@ -1,0 +1,20 @@
+# TODO
+# include:
+#   entities:
+#     - light.chambre
+#     - light.salon
+# exclude:
+#   domains:
+#     - device_tracker
+#     - light
+#   entities:
+#     - sensor.date
+#     - sensor.time
+#     - sensor.date_time
+#     - group.all_automations
+#     - group.all_devices
+#     - group.all_media_players
+#     - group.all_persons
+#     - group.all_scripts
+#     - group.all_tts
+#     - group.calendar

@@ -1,0 +1,54 @@
+- alias: Hall lights - Auto on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hall0_modect1_motion
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.hall1_modect1_motion
+      to: 'on'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: below_horizon
+      - condition: numeric_state
+        entity_id: sensor.hall0_modect1_lightlevel
+        below: 10
+      - condition: numeric_state
+        entity_id: sensor.hall1_modect1_lightlevel
+        below: 10
+  action:
+    - service: timer.start
+      entity_id: timer.hall_lights
+
+#TODO: Only trigger if light was turned on by motion ?
+- alias: Hall Lights - Auto off
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.hall_lights
+  action:
+    - service: light.turn_off
+      entity_id: light.hall
+      data:
+        transition: 30
+
+- alias: Hall Lights - Turn on lights on timer active
+  trigger:
+    - platform: state
+      entity_id: timer.hall_lights
+      to: 'active'
+  action:
+    - service: light.turn_on
+      entity_id: light.hall
+      data_template:
+        profile: >
+          {% if states('sensor.time') >= "23:00" or states('sensor.time') <= "01:00" -%}
+            evening
+          {%- elif states('sensor.time') > "01:00" and states('sensor.time') < "07:00" -%}
+            night
+          {%- else -%}
+            default
+          {%- endif %}

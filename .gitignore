@@ -1,0 +1,33 @@
+# Files/Folders with personal details or unneeded
+.cloud
+.google.token
+.HA_VERSION
+.storage
+.uuid
+.vscode
+home-assistant_v2.db*
+home-assistant.db*
+html5_push_registrations.conf
+options.xml
+pyozw.sqlite
+secrets.yaml
+zigbee.db
+zwcfg_*
+zwscene.xml
+
+# Temporary files
+*.db-journal
+*.pid
+tts
+
+# automatically downloaded dependencies
+deps
+lib
+www
+
+# Log files
+home-assistant.log
+OZW_Log.txt
+
+# Development files
+custom_components/

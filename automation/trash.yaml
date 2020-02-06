@@ -1,0 +1,62 @@
+- alias: Trash - Poubelles
+  trigger:
+    - platform: template
+      value_template: "{{ states('sensor.time') == '20:00' }}"
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: state
+      entity_id: sensor.trash_normal
+      state: 'True'
+  action:
+    - service: script.tts_notify
+      data:
+        entity_id: group.all_tts
+        message: Il faut sortir les poubelles !
+    - service: notify.all
+      data:
+        title: Poubelles
+        message: Il faut sortir les poubelles !
+
+- alias: Trash - PMC
+  trigger:
+    - platform: template
+      value_template: "{{ states('sensor.time') == '20:01' }}"
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: state
+      entity_id: sensor.trash_pmc
+      state: 'True'
+  action:
+    - service: script.tts_notify
+      data:
+        entity_id: group.all_tts
+        message: Il faut sortir les PMC !
+    - service: notify.all
+      data:
+        title: Poubelles
+        message: Il faut sortir les PMC !
+
+- alias: Trash - Cartons
+  trigger:
+    - platform: template
+      value_template: "{{ states('sensor.time') == '20:02' }}"
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: state
+      entity_id: sensor.trash_cartons
+      state: 'True'
+  action:
+    - service: script.tts_notify
+      data:
+        entity_id: group.all_tts
+        message: Il faut sortir les cartons !
+    - service: notify.all
+      data:
+        title: Poubelles
+        message: Il faut sortir les cartons !

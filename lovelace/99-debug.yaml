@@ -1,0 +1,33 @@
+- title: DEBUG
+  icon: 'mdi:bug'
+  path: debug
+  badges: []
+  cards:
+    - type: entities
+      entities:
+        - input_select.manual_presence
+    
+    - type: 'custom:zha-network-card'
+      sort_by: available
+      clickable: true
+      columns:
+      - name: Name
+        prop: name
+      - attr: available
+        id: available
+        modify: x || "false"
+        name: Online
+      - attr: rssi
+        name: RSSI
+      - attr: lqi
+        name: LQI
+      - attr: manufacturer
+        name: Manufacturer
+      - attr: model
+        name: Model
+      - attr: ieee
+        name: IEEE
+      - attr: last_seen
+        name: Last Seen
+      - attr: power_source
+        name: Power Source

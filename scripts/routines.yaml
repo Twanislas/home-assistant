@@ -1,0 +1,30 @@
+living_going_to_bed:
+  description: Prepares the house when we go uptairs for the night
+  sequence:
+    - service: media_player.turn_off
+      data:
+        entity_id:
+          - group.all_media_players
+    - service: light.turn_on
+      entity_id: light.living
+      data:
+        transition: 15
+        profile: chill
+    - service: light.turn_on
+      entity_id: light.bedroom
+      data:
+        profile: chill
+    - service: media_player.turn_on
+      entity_id: media_player.bedroom_mibox
+    - delay: 00:05
+    - service: light.turn_off
+      entity_id: light.living
+
+bedroom_going_downstairs:
+  description: Stops everything in the bedroom after wake up when we go downstairs
+  sequence:
+    - service: light.turn_off
+      entity_id: light.bedroom
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.bedroom_mibox

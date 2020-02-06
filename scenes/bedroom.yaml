@@ -1,0 +1,17 @@
+- name: bedroom_bright
+  entities:
+    light.bedroom:
+      state: on
+      profile: bright
+
+- name: bedroom_chill
+  entities:
+    light.bedroom:
+      state: 'on'
+      profile: chill
+
+- name: bedroom_night
+  entities:
+    light.bedroom:
+      state: 'on'
+      profile: night

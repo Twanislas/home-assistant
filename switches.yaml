@@ -1,0 +1,13 @@
+# WoL Twan-PC
+- platform: wake_on_lan
+  name: office_twan_pc
+  mac: "BC:AE:C5:59:34:6F"
+  host: 10.0.7.1
+  broadcast_address: 10.0.7.255
+
+# WoL Caro-PC
+- platform: wake_on_lan
+  name: office_caro_pc
+  mac: "50:E5:49:32:6A:2B"
+  host: 10.0.7.2
+  broadcast_address: 10.0.7.255

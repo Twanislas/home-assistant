@@ -1,0 +1,2 @@
+# UPS config
+- platform: apcupsd

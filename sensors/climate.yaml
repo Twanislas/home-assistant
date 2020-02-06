@@ -1,0 +1,51 @@
+- platform: template
+  sensors:
+
+    # Offset for Hue Motion sensors
+    hall0_modect1_temperature:
+      friendly_name_template: "{{ state_attr('sensor.hall0_modect1_temperature_raw', 'friendly_name') }}"
+      unit_of_measurement: °C
+      value_template: "{{ states('sensor.hall0_modect1_temperature_raw') | float + 2 }}"
+      device_class: temperature
+      attribute_templates:
+        battery_level: "{{ state_attr('sensor.hall0_modect1_temperature_raw', 'battery_level') }}"
+    hall1_modect1_temperature:
+      friendly_name_template: "{{ state_attr('sensor.hall1_modect1_temperature_raw', 'friendly_name') }}"
+      unit_of_measurement: °C
+      value_template: "{{ states('sensor.hall1_modect1_temperature_raw') | float + 2 }}"
+      device_class: temperature
+      attribute_templates:
+        battery_level: "{{ state_attr('sensor.hall1_modect1_temperature_raw', 'battery_level') }}"
+    
+    # Current temp in the living
+    living_netatmo_temperature:
+      friendly_name_template: "{{ state_attr('climate.living_thermostat', 'friendly_name') }}"
+      unit_of_measurement: °C
+      value_template: "{{ state_attr('climate.living_thermostat', 'current_temperature') }}"
+      device_class: temperature
+
+# Mean temperatures
+- platform: min_max
+  type: mean
+  name: House temperature
+  entity_ids:
+    - sensor.hall0_modect1_temperature
+    - sensor.hall1_modect1_temperature
+    - sensor.living_netatmo_temperature
+    #- sensor.basement_temperature
+# TODO: Basement
+# - platform: min_max
+#   type: mean
+#   name: Basement temperature
+#   entity_ids:
+- platform: min_max
+  type: mean
+  name: Groundfloor temperature
+  entity_ids:
+    - sensor.hall0_modect1_temperature
+    - sensor.living_netatmo_temperature
+- platform: min_max
+  type: mean
+  name: 1stfloor temperature
+  entity_ids:
+    - sensor.hall1_modect1_temperature

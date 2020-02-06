@@ -1,0 +1,23 @@
+alarmclock:
+  description: Nicely wake the house up
+  sequence:
+    - service: light.turn_on
+      entity_id: light.bedroom
+      data:
+        transition: 1200
+        profile: default
+    - delay: 00:14:50
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.bedroom_mibox
+    - delay: 00:05
+    - service: light.turn_on
+      entity_id: light.living
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.living_cca_radio
+    - delay: 00:10
+    - service: script.tts_notify
+      data:
+        entity_id: media_player.bedroom_ghmini
+        message: Il est l'heure de se lever !

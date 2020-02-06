@@ -1,0 +1,28 @@
+- title: Halls
+  icon: mdi:stairs
+  path: halls
+  cards:
+
+    # Lights
+    - type: vertical-stack
+      cards:
+        - type: light
+          entity: light.hall
+        - type: entities
+          entities:
+            - type: 'custom:slider-entity-row'
+              entity: light.hall0_ceiling_1
+              toggle: true
+            - type: 'custom:slider-entity-row'
+              entity: light.hall0_ceiling_2
+              toggle: true
+            - type: 'custom:slider-entity-row'
+              entity: light.hall1_ceiling
+              toggle: true
+
+    # Automations
+    - type: entities
+      title: Mouvement
+      entities:
+        - automation.hall_lights_auto_on
+        - automation.hall_lights_auto_off

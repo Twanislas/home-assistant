@@ -1,0 +1,11 @@
+alarmclock_week:
+  name: Heure du réveil semaine
+  has_date: false
+  has_time: true
+  icon: mdi:alarm
+
+alarmclock_weekend:
+  name: Heure du réveil weekend
+  has_date: false
+  has_time: true
+  icon: mdi:alarm
