@@ -11,6 +11,7 @@ html5_push_registrations.conf
 options.xml
 pyozw.sqlite
 secrets.yaml
+themes
 zigbee.db
 zwcfg_*
 zwscene.xml
