@@ -9,7 +9,7 @@ alarmclock:
     - delay: 00:14:50
     - service: script.play_classic21
       data:
-        entity_id: media_player.bedroom_mibox
+        entity_id: media_player.bedroom_mibox_cast
     - delay: 00:05
     - service: light.turn_on
       entity_id: light.living
