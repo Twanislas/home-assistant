@@ -53,7 +53,7 @@
               image: /local/classic21.png
               id: script.play_classic21
               data:
-                entity_id: media_player.bedroom_mibox
+                entity_id: media_player.bedroom_mibox_cast
     
     # Alarm clock
     - type: entities
