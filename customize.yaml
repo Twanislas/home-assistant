@@ -63,6 +63,16 @@ light.living_sofa_ceiling:
 light.living_sofa_floor:
   icon: mdi:floor-lamp
 
+# Media players
+media_player.bedroom_mibox:
+  icon: mdi:television-classic
+media_player.living_mibox:
+  icon: mdi:television-classic
+media_player.bedroom_mibox_cast:
+  icon: mdi:television-classic
+media_player.living_mibox_cast:
+  icon: mdi:television-classic
+
 # Persons
 person.antoine:
   entity_picture: /local/twan.jpg
