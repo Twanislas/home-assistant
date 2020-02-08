@@ -1,9 +1,5 @@
 google_actions:
   entity_config:
-    switch.office_twan_pc:
-      room: Salon
-    switch.office_caro_pc:
-      room: Salon
     scene.living_bright:
       room: Salon
     scene.living_chill:
@@ -25,4 +21,8 @@ google_actions:
     script.bedroom_sunset_lights:
       room: Chambre
     script.living_going_to_bed:
+      room: Salon
+    switch.office_twan_pc:
+      room: Salon
+    switch.office_caro_pc:
       room: Salon
