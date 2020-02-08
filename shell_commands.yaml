@@ -1,0 +1,3 @@
+# Use OpenSSH server on windows to put the PC to sleep
+# You need to set up SSH keys and install psshutdown.exe to C:\Windows
+sleep_windows_pc: "ssh -i /config/.storage/ssh_keys/remote_shutdown -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{userhost}} 'psshutdown.exe -d -t 0 -accepteula'"

@@ -4,6 +4,10 @@
   mac: "BC:AE:C5:59:34:6F"
   host: 10.0.7.1
   broadcast_address: 10.0.7.253
+  turn_off:
+    service: shell_command.sleep_windows_pc
+    data:
+      userhost: antoi@10.0.7.1
 
 # WoL Caro-PC
 - platform: wake_on_lan
@@ -11,3 +15,7 @@
   mac: "50:E5:49:32:6A:2B"
   host: 10.0.7.2
   broadcast_address: 10.0.7.253
+  turn_off:
+    service: shell_command.sleep_windows_pc
+    data:
+      userhost: lengl@10.0.7.2
