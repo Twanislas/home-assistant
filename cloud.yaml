@@ -1,5 +1,9 @@
 google_actions:
   entity_config:
+    switch.office_twan_pc:
+      room: Salon
+    switch.office_caro_pc:
+      room: Salon
     scene.living_bright:
       room: Salon
     scene.living_chill:
