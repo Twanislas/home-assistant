@@ -25,7 +25,6 @@
           state_filter:
             - playing
             - paused
-            - idle
           entities:
             - type: 'custom:mini-media-player'
               entity: media_player.living_cca_radio
