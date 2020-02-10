@@ -16,6 +16,8 @@
   state_detection_rules:
     'com.amazon.amazonvideo.livingroom':
       - 'playing':
+          'wake_lock_size': 3
+      - 'playing':
           'wake_lock_size': 2
       - 'paused':
           'wake_lock_size': 0
@@ -69,6 +71,8 @@
     com.plexapp.android: Plex
   state_detection_rules:
     'com.amazon.amazonvideo.livingroom':
+      - 'playing':
+          'wake_lock_size': 3
       - 'playing':
           'wake_lock_size': 2
       - 'paused':
