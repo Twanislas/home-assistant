@@ -64,11 +64,19 @@ light.living_sofa_floor:
   icon: mdi:floor-lamp
 
 # Media players
+media_player.bedroom_ghmini:
+  icon: mdi:google-home
 media_player.bedroom_mibox:
   icon: mdi:television-classic
-media_player.living_mibox:
-  icon: mdi:television-classic
 media_player.bedroom_mibox_cast:
+  icon: mdi:television-classic
+media_player.living_cca_radio:
+  icon: mdi:cast-audio
+media_player.living_ccu_tv:
+  icon: mdi:google-chrome
+media_player.living_ghmini:
+  icon: mdi:google-home
+media_player.living_mibox:
   icon: mdi:television-classic
 media_player.living_mibox_cast:
   icon: mdi:television-classic
