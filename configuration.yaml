@@ -27,6 +27,10 @@ lovelace:
 updater:
   include_used_components: true
 
+# Logs
+logger:
+  default: info
+
 # Scan the network for supported devices and services
 discovery:
 ssdp:
