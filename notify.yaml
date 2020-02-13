@@ -7,6 +7,12 @@
     - service: mobile_app_iphone_de_caroline
     - service: mobile_app_twan_phone
 
+- name: phones
+  platform: group
+  services:
+    - service: mobile_app_iphone_de_caroline
+    - service: mobile_app_twan_phone
+
 # Services
 - name: html5
   platform: html5
