@@ -12,6 +12,14 @@ play_classic21:
         media_content_id: https://radios.rtbf.be/classic21-128.mp3
         media_content_type: music
 
+play_classic21_on_radio:
+  alias: Classic 21
+  description: Plays classic 21 on the living room radio
+  sequence:
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.living_cca_radio
+
 androidtv_launch_app:
   alias: Android TV Launch app
   description: Launches an app on an Android TV device, also quits backdrop

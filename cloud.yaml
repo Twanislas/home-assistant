@@ -20,6 +20,8 @@ google_actions:
       room: Chambre
     script.bedroom_sunset_lights:
       room: Chambre
+    script.play_classic21_on_radio:
+      room: Living
     script.living_going_to_bed:
       room: Salon
     switch.office_twan_pc:

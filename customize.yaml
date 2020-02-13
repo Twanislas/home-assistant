@@ -129,6 +129,8 @@ script.bedroom_going_downstairs:
 script.bedroom_sunset_lights:
   friendly_name: Coucher de soleil
   icon: mdi:weather-sunset-down
+script.play_classic21_on_radio:
+  icon: mdi:radio
 script.living_going_to_bed:
   friendly_name: Routine on monte
 
