@@ -91,6 +91,12 @@ person.antoine:
 person.caroline:
   entity_picture: /local/caro.jpg
 
+# Proximity
+proximity.home:
+  friendly_name: Proximité maison
+  icon: mdi:home-import-outline
+
+
 # Scenes
 scene.living_bright:
   friendly_name: Lumineux
