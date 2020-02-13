@@ -16,4 +16,4 @@ exclude:
     - media_player.living_mibox_cast
     - sensor.ophaalkalender_papier
     - sensor.ophaalkalender_pmd
-    - sensor.ophaalkalender_restafva
+    - sensor.ophaalkalender_restafval
