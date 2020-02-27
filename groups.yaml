@@ -10,6 +10,7 @@ all_tts:
   entities:
     - media_player.bedroom_ghmini
     - media_player.living_ghmini
+    - media_player.living_ghhub
 
 all_media_players:
   name: All media players

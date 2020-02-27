@@ -78,6 +78,8 @@ media_player.living_cca_radio:
   icon: mdi:cast-audio
 media_player.living_ccu_tv:
   icon: mdi:google-chrome
+media_player.living_ghhub:
+  icon: mdi:google-home
 media_player.living_ghmini:
   icon: mdi:google-home
 media_player.living_mibox:
