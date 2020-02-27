@@ -110,6 +110,12 @@ panel_custom:
     sidebar_icon: mdi:z-wave
     url_path: zwave
 
+# Philips Hue
+hue:
+  bridges:
+    - host: 10.0.6.2
+      allow_hue_groups: false
+
 # Includes
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list sensors_binary
@@ -135,5 +141,4 @@ script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensors
 shell_command: !include shell_commands.yaml
 switch: !include switches.yaml
-timer: !include timers.yaml
 zone: !include zones.yaml

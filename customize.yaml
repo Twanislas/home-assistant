@@ -137,10 +137,6 @@ script.living_going_to_bed:
   friendly_name: Routine on monte
 
 # Sensors
-binary_sensor.hall0_modect1_motion:
-  device_class: motion
-binary_sensor.hall1_modect1_motion:
-  device_class: motion
 sensor.1stfloor_temperature:
   friendly_name: Température étage
   icon: mdi:home-floor-1
