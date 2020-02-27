@@ -12,6 +12,7 @@
           cards:
             - type: entity-button
               entity: scene.living_bright
+              show_name: false
               tap_action:
                 action: call-service
                 service: scene.turn_on
@@ -19,6 +20,7 @@
                   entity_id: scene.living_bright
             - type: entity-button
               entity: scene.living_chill
+              show_name: false
               tap_action:
                 action: call-service
                 service: scene.turn_on
@@ -26,6 +28,7 @@
                   entity_id: scene.living_chill
             - type: entity-button
               entity: scene.living_cinema
+              show_name: false
               tap_action:
                 action: call-service
                 service: scene.turn_on
@@ -33,6 +36,7 @@
                   entity_id: scene.living_cinema
             - type: entity-button
               entity: scene.living_night
+              show_name: false
               tap_action:
                 action: call-service
                 service: scene.turn_on
