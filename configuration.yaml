@@ -103,6 +103,13 @@ telegram_bot:
       - !secret telegram_chatid_debug
       - !secret telegram_chatid
 
+# Custom panels
+panel_custom:
+  - name: zwavegraph2
+    sidebar_title: Z-Wave Graph
+    sidebar_icon: mdi:z-wave
+    url_path: zwave
+
 # Includes
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list sensors_binary
