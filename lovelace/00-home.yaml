@@ -8,11 +8,13 @@
       cards:
       - type: entity-button
         entity: light.living
+        state_color: true
         hold_action:
           action: navigate
           navigation_path: /lovelace/living
       - type: entity-button
         entity: light.bedroom
+        state_color: true
         hold_action:
           action: navigate
           navigation_path: /lovelace/bedroom
