@@ -116,6 +116,16 @@ hue:
     - host: 10.0.6.2
       allow_hue_groups: false
 
+# MQTT
+mqtt:
+  discovery: true
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
+
 # Includes
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list sensors_binary
