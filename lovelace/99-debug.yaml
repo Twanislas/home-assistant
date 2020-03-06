@@ -31,3 +31,5 @@
         name: Last Seen
       - attr: power_source
         name: Power Source
+    
+    - type: 'custom:zha-network-visualization-card'
