@@ -29,10 +29,12 @@ device_tracker.unifi_twanphone:
   icon: mdi:cellphone-android
 device_tracker.app_twanphone:
   icon: mdi:cellphone-android
+  hidden: true
 device_tracker.unifi_carophone:
   icon: mdi:cellphone-iphone
 device_tracker.app_carophone:
   icon: mdi:cellphone-iphone
+  hidden: true
 device_tracker.stadia_pad_caro:
   icon: mdi:google-controller
 device_tracker.stadia_pad_twan:
