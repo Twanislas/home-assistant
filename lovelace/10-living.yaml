@@ -60,11 +60,22 @@
     # Media players
     - type: vertical-stack
       cards:
-      - type: 'custom:mini-media-player'
-        entity: media_player.living_mibox
-        artwork: cover
-        hide:
-          source: true
+      - type: entities
+        entities:
+        - type: 'custom:mini-media-player'
+          entity: media_player.living_mibox
+          artwork: cover
+          hide:
+            source: true
+          group: true
+          shortcuts:
+            buttons:
+              - type: script
+                name: Classic 21
+                image: /local/classic21.png
+                id: script.play_classic21
+                data:
+                  entity_id: media_player.living_mibox_cast
       - type: entities
         entities:
           - type: 'custom:mini-media-player'
