@@ -1,4 +1,5 @@
-purge_keep_days: 3
+db_url: mysql://homeassistant:password@core-mariadb/homeassistant?charset=utf8
+purge_keep_days: 7
 exclude:
   entities:
     - sensor.date_time
