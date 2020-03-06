@@ -75,15 +75,6 @@ google:
   client_secret: !secret google_calendar_secret
   track_new_calendar: false
 
-# UniFi
-unifi:
-  controllers:
-    - host: !secret unifi_host
-      site: !secret unifi_site
-      ssid_filter:
-        - !secret unifi_ssid_home
-        - !secret unifi_ssid_iot
-
 # Alarm
 alarm_control_panel:
   - platform: manual
