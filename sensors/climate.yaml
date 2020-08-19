@@ -5,14 +5,14 @@
     hall0_modect1_temperature:
       friendly_name_template: "{{ state_attr('sensor.hall0_modect1_temperature_raw', 'friendly_name') }}"
       unit_of_measurement: °C
-      value_template: "{{ states('sensor.hall0_modect1_temperature_raw') | float + 2 }}"
+      value_template: "{{ ((states('sensor.hall0_modect1_temperature_raw') | float) + 3.31) | round(2) }}"
       device_class: temperature
       attribute_templates:
         battery_level: "{{ state_attr('sensor.hall0_modect1_temperature_raw', 'battery_level') }}"
     hall1_modect1_temperature:
       friendly_name_template: "{{ state_attr('sensor.hall1_modect1_temperature_raw', 'friendly_name') }}"
       unit_of_measurement: °C
-      value_template: "{{ states('sensor.hall1_modect1_temperature_raw') | float + 2 }}"
+      value_template: "{{ ((states('sensor.hall1_modect1_temperature_raw') | float) + 2.7) | round(2) }}"
       device_class: temperature
       attribute_templates:
         battery_level: "{{ state_attr('sensor.hall1_modect1_temperature_raw', 'battery_level') }}"
