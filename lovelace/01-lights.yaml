@@ -15,17 +15,37 @@
               entity: light.living_sofa_ceiling
               toggle: true
             - type: 'custom:slider-entity-row'
-              entity: light.living_sofa_floor
+              entity: light.living_sofa_cornerstand
               toggle: true
             - type: 'custom:slider-entity-row'
-              entity: light.living_desk_ceiling
+              entity: light.living_table_ceiling
+              toggle: true
+        - type: 'custom:fold-entity-row'
+          head:
+            type: 'custom:slider-entity-row'
+            entity: light.office
+            toggle: true
+          open: true
+          entities:
+            - type: 'custom:slider-entity-row'
+              entity: light.office_ceiling
               toggle: true
             - type: 'custom:slider-entity-row'
-              entity: light.living_desk_floor
+              entity: light.office_cornerlamp
               toggle: true
-        - type: 'custom:slider-entity-row'
-          entity: light.bedroom
-          toggle: true
+        - type: 'custom:fold-entity-row'
+          head:
+            type: 'custom:slider-entity-row'
+            entity: light.bedroom
+            toggle: true
+          open: true
+          entities:
+          - type: 'custom:slider-entity-row'
+            entity: light.bedroom_tvbackdrop
+            toggle: true
+          - type: 'custom:slider-entity-row'
+            entity: light.bedroom_wall
+            toggle: true
         - type: 'custom:slider-entity-row'
           entity: light.hall
           toggle: true

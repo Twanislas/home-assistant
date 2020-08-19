@@ -19,11 +19,6 @@ automation.presence_antoine_left_work:
 automation.presence_caro_left_work:
   friendly_name: Caro quitte les cours
 
-# Climate
-climate.living_thermostat:
-  friendly_name: Salon
-  icon: mdi:thermostat
-
 # Device trackers
 device_tracker.app_twanphone:
   icon: mdi:cellphone-android
@@ -42,23 +37,13 @@ light.bedroom:
 light.living:
   friendly_name: Living
   icon: mdi:sofa
+light.office:
+  friendly_name: Bureau
+  icon: mdi:desk
 
 # Lights - individual
-light.bedroom_floor:
-  icon: mdi:floor-lamp
-light.hall0_ceiling_1:
-  icon: mdi:ceiling-light
-light.hall0_ceiling_2:
-  icon: mdi:ceiling-light
-light.hall1_ceiling:
-  icon: mdi:ceiling-light
-light.living_desk_ceiling:
-  icon: mdi:ceiling-light
-light.living_desk_floor:
-  icon: mdi:floor-lamp
-light.living_sofa_ceiling:
-  icon: mdi:ceiling-light
-light.living_sofa_floor:
+light.office_cornerlamp:
+  friendly_name: Pied bureau
   icon: mdi:floor-lamp
 
 # Media players
@@ -97,8 +82,8 @@ proximity.home:
 scene.living_bright:
   friendly_name: Lumineux
   icon: mdi:lightbulb-on
-scene.living_cinema:
-  friendly_name: Cinéma
+scene.living_evening:
+  friendly_name: Soirée
   icon: mdi:theater
 scene.living_chill:
   friendly_name: Détente
@@ -141,10 +126,6 @@ sensor.hall0_modect1_temperature_raw:
   hidden: true
 sensor.hall1_modect1_temperature_raw:
   hidden: true
-sensor.kitchen_plug_frigo_energy:
-  device_class: power
-sensor.kitchen_plug_frigo_power:
-  device_class: power
 sensor.moon:
   friendly_name: Lune
 sensor.seventeentrack_packages_delivered:
@@ -153,6 +134,15 @@ sensor.seventeentrack_packages_delivered:
 sensor.seventeentrack_packages_in_transit:
   friendly_name: Colis en transit
   unit_of_measurement: colis
+sensor.trash_restafval:
+  friendly_name: Poubelles
+  icon: "mdi:trash-can"
+sensor.trash_pmd:
+  friendly_name: PMC
+  icon: "mdi:recycle"
+sensor.trash_papier:
+  friendly_name: Cartons
+  icon: "mdi:package-variant"
 
 # Switches
 switch.office_twan_pc:

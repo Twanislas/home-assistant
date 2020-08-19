@@ -27,13 +27,13 @@
                 service_data:
                   entity_id: scene.living_chill
             - type: entity-button
-              entity: scene.living_cinema
+              entity: scene.living_evening
               show_name: false
               tap_action:
                 action: call-service
                 service: scene.turn_on
                 service_data:
-                  entity_id: scene.living_cinema
+                  entity_id: scene.living_evening
             - type: entity-button
               entity: scene.living_night
               show_name: false
@@ -43,18 +43,16 @@
                 service_data:
                   entity_id: scene.living_night
         - type: entities
+          show_header_toggle: false
           entities:
             - type: 'custom:slider-entity-row'
               entity: light.living_sofa_ceiling
               toggle: true
             - type: 'custom:slider-entity-row'
-              entity: light.living_sofa_floor
+              entity: light.living_sofa_cornerstand
               toggle: true
             - type: 'custom:slider-entity-row'
-              entity: light.living_desk_ceiling
-              toggle: true
-            - type: 'custom:slider-entity-row'
-              entity: light.living_desk_floor
+              entity: light.living_table_ceiling
               toggle: true
 
     # Media players
@@ -76,21 +74,7 @@
                 id: script.play_classic21
                 data:
                   entity_id: media_player.living_mibox_cast
-      - type: entities
-        entities:
-          - type: 'custom:mini-media-player'
-            entity: media_player.living_cca_radio
-            artwork: cover
-            group: true
-            shortcuts:
-              buttons:
-                - type: script
-                  name: Classic 21
-                  image: /local/classic21.png
-                  id: script.play_classic21
-                  data:
-                    entity_id: media_player.living_cca_radio
-          - automation.living_radio_auto_off
+
       - type: 'custom:mini-media-player'
         entity: media_player.living_ccu_tv
         artwork: cover

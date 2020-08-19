@@ -15,7 +15,7 @@ alarmclock:
       entity_id: light.living
     - service: script.play_classic21
       data:
-        entity_id: media_player.living_cca_radio
+        entity_id: media_player.living_mibox_cast
     - delay: 00:10
     - service: script.tts_notify
       data:

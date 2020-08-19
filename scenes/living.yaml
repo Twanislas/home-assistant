@@ -10,16 +10,13 @@
       state: 'on'
       profile: chill
 
-- name: living_cinema
+- name: living_evening
   entities:
-    light.living_sofa_ceiling: off
-    light.living_sofa_floor:
+    light.living_sofa_ceiling : off
+    light.living_sofa_cornerstand:
       state: 'on'
-      profile: default
-    light.living_desk_ceiling: off
-    light.living_desk_floor:
-      state: 'on'
-      profile: default
+      profile: chill
+    light.living_table_ceiling: off
 
 - name: living_night
   entities:

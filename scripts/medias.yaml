@@ -18,7 +18,7 @@ play_classic21_on_radio:
   sequence:
     - service: script.play_classic21
       data:
-        entity_id: media_player.living_cca_radio
+        entity_id: media_player.living_mibox_cast
 
 androidtv_launch_app:
   alias: Android TV Launch app
@@ -40,6 +40,8 @@ androidtv_launch_app:
       entity_id: "{{ entity_id }}"
       command: "RESUME"
 
+#TODO temp scene to restore volume
+#TODO poll for play end before restoring last state
 tts_notify:
   alias: TTS Notification
   description: Notify using TTS

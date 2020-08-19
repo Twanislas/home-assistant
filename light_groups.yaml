@@ -4,22 +4,32 @@
 - platform: group
   name: bedroom
   entities:
-    - light.bedroom_floor
+    - light.bedroom_wall
+    - light.bedroom_tvbackdrop
 
 # Couloir
 - platform: group
   name: hall
   entities:
+    - light.hall0_ceiling
     - light.hall1_ceiling
-    - light.hall0_ceiling_1
-    - light.hall0_ceiling_2
 
 # Salon
 - platform: group
   name: living
   entities:
-    - light.living_desk_ceiling
-    - light.living_desk_floor
     - light.living_sofa_ceiling
-    - light.living_sofa_floor
-    
+    - light.living_sofa_cornerstand
+    - light.living_table_ceiling
+
+# Bureau
+- platform: group
+  name: office
+  entities:
+    - light.office_cornerlamp
+    - light.office_ceiling
+
+# Bureau (switch --> light)
+- platform: switch
+  name: office_cornerlamp
+  entity_id: switch.office_cornerlamp

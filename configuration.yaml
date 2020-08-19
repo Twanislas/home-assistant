@@ -11,17 +11,19 @@ homeassistant:
     automation:
       initial_state: 'on'
 
-  whitelist_external_dirs:
+  allowlist_external_dirs:
     - /config/www
 
+#TODO: Switch back to HTTPS and remove rev-proxy, avoid SPOF
 http:
-  base_url: !secret ha_base_url
-  server_port: 443
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  #base_url: !secret ha_base_url
+  server_port: 80
+  #ssl_certificate: /ssl/fullchain.pem
+  #ssl_key: /ssl/privkey.pem
 
 lovelace:
   mode: yaml
+  resources: !include ui-lovelace-resources.yaml
 
 # Help HASS team with some stats :)
 updater:
@@ -81,7 +83,7 @@ alarm_control_panel:
     name: Alarme
     code: !secret alarm_code
     delay_time: 60
-    pending_time: 30
+    #pending_time: 30
     trigger_time: 60
     disarmed:
       trigger_time: 0
@@ -94,31 +96,9 @@ telegram_bot:
       - !secret telegram_chatid_debug
       - !secret telegram_chatid
 
-# Custom panels
-panel_custom:
-  - name: zwavegraph2
-    sidebar_title: Z-Wave Graph
-    sidebar_icon: mdi:z-wave
-    url_path: zwave
-
-# Philips Hue
-hue:
-  bridges:
-    - host: 10.0.6.2
-      allow_hue_groups: false
-
-# MQTT
-mqtt:
-  discovery: true
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
-
 # Includes
-automation: !include_dir_merge_list automation
+automation: !include automations.yaml
+automation old: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list sensors_binary
 camera: !include cameras.yaml
 cloud: !include cloud.yaml

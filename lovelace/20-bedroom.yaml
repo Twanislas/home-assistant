@@ -35,9 +35,13 @@
                 service_data:
                   entity_id: scene.bedroom_night
         - type: entities
+          show_header_toggle: false
           entities:
             - type: 'custom:slider-entity-row'
-              entity: light.bedroom_floor
+              entity: light.bedroom_tvbackdrop
+              toggle: true
+            - type: 'custom:slider-entity-row'
+              entity: light.bedroom_wall
               toggle: true
 
     # Media players
