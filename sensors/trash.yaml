@@ -1,4 +1,5 @@
-- platform: ophaalkalender
+- platform: afvalbeheer
+  wastecollector: RecycleApp
   resources:
     - restafval
     - papier
@@ -8,36 +9,8 @@
   streetnumber: !secret trash_streetnumber
   dateformat: "%Y-%m-%d"
   dateonly: 1
-
-- platform: template
-  sensors:
-    trash_normal:
-      friendly_name: Poubelles
-      icon_template: "mdi:trash-can"
-      entity_id :
-        - sensor.date
-        - sensor.ophaalkalender_restafval
-      value_template: "{{ ((states('sensor.date') + ' 00:00') | as_timestamp + 86400) == (states('sensor.ophaalkalender_restafval') + ' 00:00') | as_timestamp }}"
-      attribute_templates:
-        collection_date: "{{ states('sensor.ophaalkalender_restafval') }}"
-        days_left: "{{ (((states('sensor.ophaalkalender_restafval') + ' 00:00') | as_timestamp | float - (states('sensor.date') + ' 00:00') | as_timestamp) / 86400) | int -1 }}"
-    trash_pmc:
-      friendly_name: PMC
-      icon_template: "mdi:recycle"
-      entity_id :
-        - sensor.date
-        - sensor.ophaalkalender_pmd
-      value_template: "{{ ((states('sensor.date') + ' 00:00') | as_timestamp + 86400) == (states('sensor.ophaalkalender_pmd') + ' 00:00') | as_timestamp }}"
-      attribute_templates:
-        collection_date: "{{ states('sensor.ophaalkalender_pmd') }}"
-        days_left: "{{ (((states('sensor.ophaalkalender_pmd') + ' 00:00') | as_timestamp | float - (states('sensor.date') + ' 00:00') | as_timestamp) / 86400) | int -1 }}"
-    trash_cartons:
-      friendly_name: Cartons
-      icon_template: "mdi:package-variant"
-      entity_id :
-        - sensor.date
-        - sensor.ophaalkalender_papier
-      value_template: "{{ ((states('sensor.date') + ' 00:00') | as_timestamp + 86400) == (states('sensor.ophaalkalender_papier') + ' 00:00') | as_timestamp }}"
-      attribute_templates:
-        collection_date: "{{ states('sensor.ophaalkalender_papier') }}"
-        days_left: "{{ (((states('sensor.ophaalkalender_papier') + ' 00:00') | as_timestamp | float - (states('sensor.date') + ' 00:00') | as_timestamp) / 86400) | int -1 }}"
+  disableicons: 1
+  dateobject: 1
+  upcomingsensor: 1
+  name: trash
+  nameprefix: 0

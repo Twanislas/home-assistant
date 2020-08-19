@@ -103,10 +103,9 @@
                 icon: mdi:calendar-repeat
     
     # Trash
-    - type: glance
+    - type: entities
       entities:
-        - entity: sensor.trash_normal
-        - entity: sensor.trash_pmc
-        - entity: sensor.trash_cartons
-      show_name: false
+        - entity: sensor.trash_restafval
+        - entity: sensor.trash_pmd
+        - entity: sensor.trash_papier
       title: Poubelles

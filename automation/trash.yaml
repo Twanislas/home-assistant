@@ -6,9 +6,8 @@
     - condition: state
       entity_id: group.all_persons
       state: 'home'
-    - condition: state
-      entity_id: sensor.trash_normal
-      state: 'True'
+    - condition: template
+      value_template: "{{ 'restafval' in states('sensor.trash_morgen') }}"
   action:
     - service: script.tts_notify
       data:
@@ -27,9 +26,8 @@
     - condition: state
       entity_id: group.all_persons
       state: 'home'
-    - condition: state
-      entity_id: sensor.trash_pmc
-      state: 'True'
+    - condition: template
+      value_template: "{{ 'pmd' in states('sensor.trash_morgen') }}"
   action:
     - service: script.tts_notify
       data:
@@ -48,9 +46,8 @@
     - condition: state
       entity_id: group.all_persons
       state: 'home'
-    - condition: state
-      entity_id: sensor.trash_cartons
-      state: 'True'
+    - condition: template
+      value_template: "{{ 'papier' in states('sensor.trash_morgen') }}"
   action:
     - service: script.tts_notify
       data:
