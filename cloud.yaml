@@ -6,7 +6,7 @@ google_actions:
       room: Salon
     scene.living_night:
       room: Salon
-    scene.living_cinema:
+    scene.living_evening:
       room: Salon
     scene.bedroom_bright:
       room: Chambre
@@ -21,10 +21,10 @@ google_actions:
     script.bedroom_sunset_lights:
       room: Chambre
     script.play_classic21_on_radio:
-      room: Living
+      room: Salon
     script.living_going_to_bed:
       room: Salon
     switch.office_twan_pc:
-      room: Salon
+      room: Bureau
     switch.office_caro_pc:
-      room: Salon
+      room: Bureau
