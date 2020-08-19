@@ -4,7 +4,7 @@ living_going_to_bed:
     - service: media_player.turn_off
       data:
         entity_id:
-          - group.all_media_players
+          - media_player.living_mibox
     - service: light.turn_on
       entity_id: light.living
       data:
