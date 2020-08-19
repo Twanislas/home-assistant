@@ -39,7 +39,7 @@
                 icon: mdi:snowflake
               Schedule:
                 name: Programme
-                icon: mdi:calendar-repeat
+                icon: mdi:calendar-sync
         - type: 'custom:mini-graph-card'
           hour24: true
           points_per_hour: 2
