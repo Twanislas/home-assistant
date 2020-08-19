@@ -100,7 +100,7 @@
                 icon: mdi:snowflake
               Schedule:
                 name: Programme
-                icon: mdi:calendar-repeat
+                icon: mdi:calendar-sync
     
     # Trash
     - type: entities
