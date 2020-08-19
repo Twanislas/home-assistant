@@ -5,7 +5,6 @@
 .storage
 .uuid
 .vscode
-automations.yaml
 home-assistant_v2.db*
 home-assistant.db*
 html5_push_registrations.conf

@@ -1,0 +1,32 @@
+- id: '1597425632630'
+  alias: Bedroom lights on
+  description: ''
+  trigger:
+  - device_id: 526e2d7222984ee6baafc0ba9319135e
+    discovery_id: 0x0017880102d5b7f2 action_on-press
+    domain: mqtt
+    platform: device
+    subtype: on-press
+    type: action
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.bedroom
+    service: light.turn_on
+  mode: single
+- id: '1597426295138'
+  alias: Bedroom lights off
+  description: ''
+  trigger:
+  - device_id: 526e2d7222984ee6baafc0ba9319135e
+    discovery_id: 0x0017880102d5b7f2 action_off-press
+    domain: mqtt
+    platform: device
+    subtype: off-press
+    type: action
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.bedroom
+    service: light.turn_off
+  mode: single
