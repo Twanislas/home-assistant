@@ -3,7 +3,7 @@
   path: climate
   cards:
     - type: 'custom:weather-card'
-      entity: weather.dark_sky
+      entity: weather.accuweather
     - type: entities
       entities:
         - entity: sensor.moon

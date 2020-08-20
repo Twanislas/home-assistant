@@ -69,7 +69,7 @@
     - type: vertical-stack
       cards:
         - type: 'custom:simple-weather-card'
-          entity: weather.dark_sky
+          entity: weather.accuweather
           name: ' '
         - type: 'custom:simple-thermostat'
           entity: climate.living_thermostat
