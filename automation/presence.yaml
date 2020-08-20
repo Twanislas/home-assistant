@@ -38,7 +38,7 @@
       value_template: "{{ states('climate.living_thermostat') != 'off' }}"
     - service: climate.set_preset_mode
       data:
-        entity_id: all
+        entity_id: climate.living_thermostat
         preset_mode: Schedule
 
 - alias: Presence - Antoine left work
