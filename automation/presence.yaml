@@ -29,7 +29,7 @@
       entity_id: light.living
     - service: script.play_classic21
       data:
-        entity_id: media_player.living_cca_radio
+        entity_id: media_player.living_mibox_cast
     # - service: alarm_control_panel.alarm_disarm
     #   entity_id: alarm_control_panel.alarme
     #   data:
