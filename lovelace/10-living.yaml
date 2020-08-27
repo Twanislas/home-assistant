@@ -74,6 +74,11 @@
                 id: script.play_classic21
                 data:
                   entity_id: media_player.living_mibox_cast
+      - type: entities
+        entities:
+          - switch.living_switch_tv
+          - sensor.living_switch_tv_power
+          - sensor.living_switch_tv_kwh
 
       - type: 'custom:mini-media-player'
         entity: media_player.living_ccu_tv

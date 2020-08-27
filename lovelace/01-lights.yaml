@@ -30,9 +30,6 @@
             - type: 'custom:slider-entity-row'
               entity: light.office_ceiling
               toggle: true
-            - type: 'custom:slider-entity-row'
-              entity: light.office_cornerlamp
-              toggle: true
         - type: 'custom:fold-entity-row'
           head:
             type: 'custom:slider-entity-row'

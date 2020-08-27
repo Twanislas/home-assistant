@@ -41,11 +41,6 @@ light.office:
   friendly_name: Bureau
   icon: mdi:desk
 
-# Lights - individual
-light.office_cornerlamp:
-  friendly_name: Pied bureau
-  icon: mdi:floor-lamp
-
 # Media players
 media_player.bedroom_ghmini:
   icon: mdi:google-home

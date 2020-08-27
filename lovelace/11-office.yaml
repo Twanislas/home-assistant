@@ -15,17 +15,9 @@
           - type: 'custom:slider-entity-row'
             entity: light.office_ceiling
             toggle: true
-          - type: 'custom:slider-entity-row'
-            entity: light.office_cornerlamp
-            toggle: true
 
     - type: entities
       show_header_toggle: false
       entities:
         - switch.office_twan_pc
         - switch.office_caro_pc
-
-    - type: entities
-      entities:
-        - sensor.office_cornerlamp_power
-        - sensor.office_cornerlamp_kwh

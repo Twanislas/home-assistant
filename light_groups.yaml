@@ -26,10 +26,4 @@
 - platform: group
   name: office
   entities:
-    - light.office_cornerlamp
     - light.office_ceiling
-
-# Bureau (switch --> light)
-- platform: switch
-  name: office_cornerlamp
-  entity_id: switch.office_cornerlamp
