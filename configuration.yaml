@@ -16,10 +16,10 @@ homeassistant:
 
 #TODO: Switch back to HTTPS and remove rev-proxy, avoid SPOF
 http:
-  #base_url: !secret ha_base_url
-  server_port: 80
-  #ssl_certificate: /ssl/fullchain.pem
-  #ssl_key: /ssl/privkey.pem
+  server_host: 0.0.0.0
+  server_port: 443
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
 
 lovelace:
   mode: yaml
