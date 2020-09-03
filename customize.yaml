@@ -2,9 +2,6 @@
 automation.alarmclock:
   friendly_name: Réveil
   icon: mdi:alarm-check
-automation.living_radio_auto_off:
-  friendly_name: Auto-off via TV
-  icon: mdi:auto-fix
 automation.presence_anyone_home:
   friendly_name: Arrivée maison
   icon: mdi:home-import-outline
@@ -45,8 +42,6 @@ media_player.bedroom_mibox:
   icon: mdi:television-classic
 media_player.bedroom_mibox_cast:
   icon: mdi:television-classic
-media_player.living_cca_radio:
-  icon: mdi:cast-audio
 media_player.living_ccu_tv:
   icon: mdi:google-chrome
 media_player.living_ghhub:

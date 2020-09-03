@@ -16,6 +16,5 @@ all_media_players:
   name: All media players
   entities:
     - media_player.bedroom_mibox
-    - media_player.living_cca_radio
     - media_player.living_ccu_tv
     - media_player.living_mibox
