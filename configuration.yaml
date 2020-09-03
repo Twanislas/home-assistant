@@ -13,9 +13,6 @@ homeassistant:
     automation:
       initial_state: 'on'
 
-  allowlist_external_dirs:
-    - /config/www
-
 #TODO: Switch back to HTTPS and remove rev-proxy, avoid SPOF
 http:
   server_host: 0.0.0.0
