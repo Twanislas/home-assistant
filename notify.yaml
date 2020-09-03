@@ -4,6 +4,7 @@
   services:
     - service: html5
     - service: tv_salon
+    - service: tv_chambre
     - service: mobile_app_iphone_de_caroline
     - service: mobile_app_twan_phone
 
@@ -30,5 +31,10 @@
 
 - name: tv_salon
   platform: nfandroidtv
-  host: 10.0.6.4
+  host: 10.0.6.6
+  duration: 15
+
+- name: tv_chambre
+  platform: nfandroidtv
+  host: 10.0.6.7
   duration: 15
