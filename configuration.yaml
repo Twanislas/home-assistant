@@ -5,6 +5,8 @@ homeassistant:
   elevation: !secret ha_elevation
   unit_system: metric
   time_zone: Europe/Brussels
+  internal_url: !secret ha_base_url
+  external_url: !secret ha_base_url
 
   customize: !include customize.yaml
   customize_domain:
