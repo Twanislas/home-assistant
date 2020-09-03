@@ -1,9 +1,6 @@
 # Automations
-automation.alarmclock_week:
-  friendly_name: Réveil semaine
-  icon: mdi:alarm-check
-automation.alarmclock_weekend:
-  friendly_name: Réveil weekend
+automation.alarmclock:
+  friendly_name: Réveil
   icon: mdi:alarm-check
 automation.living_radio_auto_off:
   friendly_name: Auto-off via TV

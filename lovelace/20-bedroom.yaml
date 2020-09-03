@@ -64,7 +64,5 @@
       title: Réveil matin
       show_header_toggle: false
       entities:
-        - automation.alarmclock_week
-        - input_datetime.alarmclock_week
-        - automation.alarmclock_weekend
-        - input_datetime.alarmclock_weekend
+        - automation.alarmclock
+        - sensor.app_twanphone_next_alarm
