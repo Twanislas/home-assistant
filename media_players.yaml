@@ -33,12 +33,11 @@
     'com.netflix.ninja':
       - 'media_session_state'
     'com.plexapp.android':
-      - 'playing':
-          'media_session_state': 3
-          'wake_lock_size': 3
       - 'paused':
           'media_session_state': 3
           'wake_lock_size': 1
+      - 'playing':
+          'media_session_state': 3
       - 'standby'
     'be.voo.voomotion':
       - 'playing':
@@ -89,12 +88,11 @@
     'com.netflix.ninja':
       - 'media_session_state'
     'com.plexapp.android':
-      - 'playing':
-          'media_session_state': 3
-          'wake_lock_size': 3
       - 'paused':
           'media_session_state': 3
           'wake_lock_size': 1
+      - 'playing':
+          'media_session_state': 3
       - 'standby'
     'be.voo.voomotion':
       - 'playing':
