@@ -59,7 +59,6 @@ tts:
   - platform: google_cloud
     key_file: .storage/googlecloud.json
     voice: fr-FR-Wavenet-C
-    encoding: mp3
     profiles:
       - small-bluetooth-speaker-class-device
 
