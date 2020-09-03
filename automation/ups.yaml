@@ -16,7 +16,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.ups_time_left
-    below: 10
+    below: 5
   action:
     - service: notify.all
       data_template:
