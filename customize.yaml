@@ -97,6 +97,9 @@ script.bedroom_going_downstairs:
 script.bedroom_sunset_lights:
   friendly_name: Coucher de soleil
   icon: mdi:weather-sunset-down
+script.disable_pihole:
+  friendly_name: Stop PiHole
+  icon: mdi:pi-hole
 script.play_classic21_on_radio:
   icon: mdi:radio
 script.living_going_to_bed:

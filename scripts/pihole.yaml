@@ -1,0 +1,7 @@
+disable_pihole:
+  description: Disables PiHole(s) for 5 minutes
+  sequence:
+    - service: pi_hole.disable
+      data:
+        entity_id: all
+        duration: 00:05

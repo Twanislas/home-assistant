@@ -21,6 +21,7 @@
           show_header_toggle: false
           icon: mdi:pi-hole
           entities:
+            - script.disable_pihole
             - sensor.pihole_dns_queries_today
             - sensor.pihole_ads_blocked_today
             - sensor.pihole_ads_percentage_blocked_today
