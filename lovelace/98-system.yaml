@@ -63,7 +63,6 @@
             - entity: binary_sensor.updater
             - entity: sensor.hacs
             - entity: sensor.last_boot
-            - entity: zwave.gateway
           show_header_toggle: false
           title: HASS
           type: entities
