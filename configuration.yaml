@@ -13,7 +13,6 @@ homeassistant:
     automation:
       initial_state: 'on'
 
-#TODO: Switch back to HTTPS and remove rev-proxy, avoid SPOF
 http:
   server_host: 0.0.0.0
   server_port: 443
