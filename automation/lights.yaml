@@ -5,14 +5,19 @@
       entity_id: binary_sensor.hall0_modect1_motion
       to: 'on'
   condition:
-    condition: or
+    condition: and
     conditions:
       - condition: state
-        entity_id: sun.sun
-        state: below_horizon
-      - condition: numeric_state
-        entity_id: sensor.hall0_modect1_illuminance
-        below: 4000
+        entity_id: light.hall0_ceiling
+        state:  'off'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: sun.sun
+            state: below_horizon
+          - condition: numeric_state
+            entity_id: sensor.hall0_modect1_illuminance
+            below: 4000
   action:
     - service: light.turn_on
       entity_id: light.hall0_ceiling
@@ -24,12 +29,19 @@
             night
           {%- else -%}
             default
-          {%- endif %} 
-    - delay: 00:02
+          {%- endif %}
+
+- alias: Hall lights downstairs - Auto off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hall0_modect1_motion
+      to: 'off'
+      for: 00:02
+  action:
     - service: light.turn_off
       entity_id: light.hall0_ceiling
       data:
-        transition: 30
+        transition: 10
 
 - alias: Hall lights upstairs - Auto on
   trigger:
@@ -37,14 +49,19 @@
       entity_id: binary_sensor.hall1_modect1_motion
       to: 'on'
   condition:
-    condition: or
+    condition: and
     conditions:
       - condition: state
-        entity_id: sun.sun
-        state: below_horizon
-      - condition: numeric_state
-        entity_id: sensor.hall1_modect1_illuminance
-        below: 4000
+        entity_id: light.hall1_ceiling
+        state:  'off'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: sun.sun
+            state: below_horizon
+          - condition: numeric_state
+            entity_id: sensor.hall1_modect1_illuminance
+            below: 4000
   action:
     - service: light.turn_on
       entity_id: light.hall1_ceiling
@@ -56,9 +73,16 @@
             night
           {%- else -%}
             default
-          {%- endif %} 
-    - delay: 00:02
+          {%- endif %}
+
+- alias: Hall lights upstairs - Auto off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hall1_modect1_motion
+      to: 'off'
+      for: 00:02
+  action:
     - service: light.turn_off
       entity_id: light.hall1_ceiling
       data:
-        transition: 30
+        transition: 10
