@@ -1,110 +1,68 @@
 # TODO: Find a way to turn off but keep network up (deep sleep ?)
+
 - platform: androidtv
   host: 10.0.6.4
   name: "TV Salon"
-  adb_server_ip: 127.0.0.1
-  adb_server_port: 5037
-  apps:
-    app.xeev.xeplayer: IPTV
-    be.voo.voomotion: VOOMotion
-    com.amazon.amazonvideo.livingroom: Prime Video
-    com.google.android.apps.mediashell: Cast
-    com.google.android.tvlauncher: Android TV
-    com.google.android.youtube.tv: YouTube
-    com.netflix.ninja: Netflix
-    com.plexapp.android: Plex
-  state_detection_rules:
-    'com.amazon.amazonvideo.livingroom':
-      - 'playing':
-          'wake_lock_size': 3
-      - 'playing':
-          'wake_lock_size': 2
-      - 'paused':
-          'wake_lock_size': 0
-      - 'standby'
-    'com.google.android.tvlauncher':
-      - 'standby'
-    'com.google.android.apps.mediashell': # TODO: Make sure status is not "playing" when casting photos, not videos
-      - 'paused':
-          'media_session_state': 2
-      - 'playing':
-          'wake_lock_size': 3
-      - 'standby'
-    'com.netflix.ninja':
-      - 'media_session_state'
-    'com.plexapp.android':
-      - 'paused':
-          'media_session_state': 3
-          'wake_lock_size': 1
-      - 'playing':
-          'media_session_state': 3
-      - 'standby'
-    'be.voo.voomotion':
-      - 'playing':
-          'wake_lock_size': 3
-      - 'playing':
-          'wake_lock_size': 2
-      - 'standby'
-    'app.xeev.xeplayer':
-      - 'playing':
-          'wake_lock_size': 3
-      - 'paused':
-          'wake_lock_size': 2
-      - 'standby'
-    'com.google.android.youtube.tv':
-      - 'media_session_state'
+  <<: &atv_mibox
+    adb_server_ip: 127.0.0.1
+    adb_server_port: 5037
+    apps:
+      app.xeev.xeplayer: IPTV
+      be.voo.voomotion: VOOMotion
+      com.amazon.amazonvideo.livingroom: Prime Video
+      com.google.android.apps.mediashell: Cast
+      com.google.android.tvlauncher: Android TV
+      com.google.android.youtube.tv: YouTube
+      com.netflix.ninja: Netflix
+      com.plexapp.android: Plex
+    state_detection_rules:
+      'com.amazon.amazonvideo.livingroom':
+        - 'playing':
+            'wake_lock_size': 4 # sure
+        - 'playing':
+            'wake_lock_size': 3
+        - 'playing':
+            'wake_lock_size': 2
+        - 'paused':
+            'wake_lock_size': 0
+        - 'standby'
+      'com.google.android.tvlauncher':
+        - 'standby'
+      'com.google.android.apps.mediashell': # TODO: Make sure status is not "playing" when casting photos, not videos
+        - 'paused':
+            'media_session_state': 2
+        - 'playing':
+            'wake_lock_size': 4 # sure
+        - 'playing':
+            'wake_lock_size': 3
+        - 'standby'
+      'com.netflix.ninja':
+        - 'media_session_state'
+      'com.plexapp.android':
+        - 'paused':
+            'media_session_state': 3
+            'wake_lock_size': 1
+        - 'playing':
+            'media_session_state': 3
+        - 'standby'
+      'be.voo.voomotion':
+        - 'playing':
+            'wake_lock_size': 4 # sure
+        - 'playing':
+            'wake_lock_size': 3 # ????
+        - 'standby':
+            'wake_lock_size': 2 # sure
+        - 'standby'
+      'app.xeev.xeplayer':
+        - 'playing':
+            'wake_lock_size': 3
+        - 'paused':
+            'wake_lock_size': 2
+        - 'standby'
+      'com.google.android.youtube.tv':
+        - 'media_session_state'
 
 - platform: androidtv
   host: 10.0.6.5
   name: "TV Chambre"
-  adb_server_ip: 127.0.0.1
-  adb_server_port: 5037
-  apps:
-    app.xeev.xeplayer: IPTV
-    be.voo.voomotion: VOOMotion
-    com.amazon.amazonvideo.livingroom: Prime Video
-    com.google.android.apps.mediashell: Cast
-    com.google.android.tvlauncher: Android TV
-    com.google.android.youtube.tv: YouTube
-    com.netflix.ninja: Netflix
-    com.plexapp.android: Plex
-  state_detection_rules:
-    'com.amazon.amazonvideo.livingroom':
-      - 'playing':
-          'wake_lock_size': 3
-      - 'playing':
-          'wake_lock_size': 2
-      - 'paused':
-          'wake_lock_size': 0
-      - 'standby'
-    'com.google.android.tvlauncher':
-      - 'standby'
-    'com.google.android.apps.mediashell': # TODO: Make sure status is not "playing" when casting photos, not videos
-      - 'paused':
-          'media_session_state': 2
-      - 'playing':
-          'wake_lock_size': 3
-      - 'standby'
-    'com.netflix.ninja':
-      - 'media_session_state'
-    'com.plexapp.android':
-      - 'paused':
-          'media_session_state': 3
-          'wake_lock_size': 1
-      - 'playing':
-          'media_session_state': 3
-      - 'standby'
-    'be.voo.voomotion':
-      - 'playing':
-          'wake_lock_size': 3
-      - 'playing':
-          'wake_lock_size': 2
-      - 'standby'
-    'app.xeev.xeplayer':
-      - 'playing':
-          'wake_lock_size': 3
-      - 'paused':
-          'wake_lock_size': 2
-      - 'standby'
-    'com.google.android.youtube.tv':
-      - 'media_session_state'
+  <<: *atv_mibox
