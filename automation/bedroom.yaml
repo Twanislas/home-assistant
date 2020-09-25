@@ -2,7 +2,9 @@
 - alias: alarmclock
   trigger:
     - platform: template
-      value_template: "{{ (states('sensor.date_time_iso') | as_timestamp) == ((state_attr('sensor.app_twanphone_next_alarm', 'Time in Milliseconds') | int / 1000) - 60*15) }}"
+      value_template: >-
+        {% set dummy = states("sensor.time") %}
+        {{ (utcnow() | as_timestamp) == ((states('sensor.app_twanphone_next_alarm') | as_timestamp) - 60*15) }}
   condition:
     - condition: state
       entity_id: person.antoine
