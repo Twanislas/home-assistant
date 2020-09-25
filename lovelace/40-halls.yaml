@@ -23,8 +23,6 @@
       title: Mouvement
       entities:
         - automation.hall_lights_downstairs_auto_on
-        - automation.hall_lights_downstairs_auto_off
         - automation.hall_lights_upstairs_auto_on
-        - automation.hall_lights_upstairs_auto_off
         - binary_sensor.hall0_modect1_motion
         - binary_sensor.hall1_modect1_motion
