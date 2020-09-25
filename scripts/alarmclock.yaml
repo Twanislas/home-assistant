@@ -10,13 +10,16 @@ alarmclock:
     - service: script.play_classic21
       data:
         entity_id: media_player.bedroom_mibox_cast
-    - delay: 00:05
+    - delay: 00:10
     - service: light.turn_on
       entity_id: light.living
+    - service: switch.turn_on
+      data:
+        entity_id: switch.living_switch_tv
+    - delay: 10
     - service: script.play_classic21
       data:
         entity_id: media_player.living_mibox_cast
-    - delay: 00:10
     - service: script.tts_notify
       data:
         entity_id: media_player.bedroom_ghmini
