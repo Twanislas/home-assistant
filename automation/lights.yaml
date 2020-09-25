@@ -1,4 +1,3 @@
-#TODO: Only trigger if light was turned on by motion ?
 - alias: Hall lights downstairs - Auto on
   trigger:
     - platform: state
@@ -30,14 +29,11 @@
           {%- else -%}
             default
           {%- endif %}
-
-- alias: Hall lights downstairs - Auto off
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.hall0_modect1_motion
-      to: 'off'
-      for: 00:02
-  action:
+    - wait_for_trigger:
+      - platform: state
+        entity_id: binary_sensor.hall0_modect1_motion
+        to: 'off'
+        for: 00:02
     - service: light.turn_off
       entity_id: light.hall0_ceiling
       data:
@@ -74,14 +70,11 @@
           {%- else -%}
             default
           {%- endif %}
-
-- alias: Hall lights upstairs - Auto off
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.hall1_modect1_motion
-      to: 'off'
-      for: 00:02
-  action:
+    - wait_for_trigger:
+      - platform: state
+        entity_id: binary_sensor.hall1_modect1_motion
+        to: 'off'
+        for: 00:02
     - service: light.turn_off
       entity_id: light.hall1_ceiling
       data:
