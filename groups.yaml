@@ -9,8 +9,8 @@ all_tts:
   name: All TTS
   entities:
     - media_player.bedroom_ghmini
-    - media_player.living_ghmini
     - media_player.living_ghhub
+    - media_player.office_ghmini
 
 all_media_players:
   name: All media players

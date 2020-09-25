@@ -46,8 +46,6 @@ media_player.living_ccu_tv:
   icon: mdi:google-chrome
 media_player.living_ghhub:
   icon: mdi:google-home
-media_player.living_ghmini:
-  icon: mdi:google-home
 media_player.living_mibox:
   icon: mdi:television-classic
 media_player.living_mibox_cast:
