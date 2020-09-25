@@ -1,0 +1,8 @@
+- alias: "System - Let's Encrypt Renewal"
+  trigger:
+    platform: time
+    at: '01:25:00'
+  action:
+    - service: hassio.addon_restart
+      data:
+        addon: core_letsencrypt
