@@ -19,12 +19,8 @@
       'com.amazon.amazonvideo.livingroom':
         - 'playing':
             'wake_lock_size': 4 # sure
-        - 'playing':
-            'wake_lock_size': 3
-        - 'playing':
-            'wake_lock_size': 2
         - 'paused':
-            'wake_lock_size': 0
+            'wake_lock_size': 2
         - 'standby'
       'com.google.android.tvlauncher':
         - 'standby'
