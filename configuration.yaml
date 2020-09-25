@@ -14,7 +14,6 @@ homeassistant:
       initial_state: 'on'
 
 http:
-  server_host: 0.0.0.0
   server_port: 443
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
