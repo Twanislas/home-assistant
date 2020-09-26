@@ -91,7 +91,6 @@ history: !include history.yaml
 # input_boolean: !include inputs_boolean.yaml
 input_datetime: !include inputs_datetime.yaml
 input_select: !include inputs_select.yaml
-ios: !include notify_ios.yaml
 light: !include light_groups.yaml
 logbook: !include logbook.yaml
 media_player: !include media_players.yaml

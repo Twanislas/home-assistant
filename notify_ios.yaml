@@ -1,7 +1,0 @@
-push:
-  categories:
-    - name: Chauffage
-      identifier: 'climate'
-      actions:
-        - identifier: 'climate_on'
-          title: 'Oui'
