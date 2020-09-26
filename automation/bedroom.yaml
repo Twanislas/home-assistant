@@ -4,7 +4,7 @@
     - platform: template
       value_template: >-
         {% set dummy = states("sensor.time") %}
-        {{ (utcnow() | as_timestamp) == ((states('sensor.app_twanphone_next_alarm') | as_timestamp) - 60*15) }}
+        {{ ((utcnow() | as_timestamp) | int) == (((states('sensor.app_twanphone_next_alarm') | as_timestamp) - 60*15) | int) }}
   condition:
     - condition: state
       entity_id: person.antoine
