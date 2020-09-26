@@ -79,14 +79,6 @@ alarm_control_panel:
     disarmed:
       trigger_time: 0
 
-# Telegram
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram_api_key
-    allowed_chat_ids:
-      - !secret telegram_chatid_debug
-      - !secret telegram_chatid
-
 # Includes
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation

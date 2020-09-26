@@ -21,14 +21,6 @@
   vapid_prv_key: !secret vapid_prv_key
   vapid_email: !secret vapid_email
 
-- name: telegram_group
-  platform: telegram
-  chat_id: !secret telegram_chatid
-
-- name: telegram_debug
-  platform: telegram
-  chat_id: !secret telegram_chatid_debug
-
 - name: tv_salon
   platform: nfandroidtv
   host: 10.0.6.6
