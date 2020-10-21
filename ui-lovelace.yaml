@@ -1,9 +1,2 @@
 title: HomeTroll
-custom_header:
-  compact_mode: true
-  button_icons:
-    menu: mdi:home-assistant
-  options_hide: true
-  chevrons: false
-    
 views: !include_dir_merge_list lovelace

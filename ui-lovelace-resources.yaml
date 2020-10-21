@@ -15,8 +15,6 @@
   url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
 - url: /hacsfiles/lovelace-card-mod/card-mod.js
   type: module
-- url: /hacsfiles/custom-header/custom-header.js
-  type: module
 
 - url: /hacsfiles/lovelace-thermostat-card/main.js
   type: module
