@@ -20,15 +20,8 @@
             - type: 'custom:slider-entity-row'
               entity: light.living_table_ceiling
               toggle: true
-        - type: 'custom:fold-entity-row'
-          head:
-            type: 'custom:slider-entity-row'
-            entity: light.office
-            toggle: true
-          open: true
-          entities:
             - type: 'custom:slider-entity-row'
-              entity: light.office_ceiling
+              entity: light.living_table_cornerstand
               toggle: true
         - type: 'custom:fold-entity-row'
           head:
@@ -49,13 +42,13 @@
     - type: horizontal-stack
       cards:
         - entities:
-            - sensor.hall0_modect1_lightlevel
+            - sensor.hall0_modect1_illuminance
           line_width: 4
           name: Couloir bas
           points_per_hour: 1
           type: 'custom:mini-graph-card'
         - entities:
-            - sensor.hall1_modect1_lightlevel
+            - sensor.hall1_modect1_illuminance
           line_width: 4
           name: Couloir haut
           points_per_hour: 1

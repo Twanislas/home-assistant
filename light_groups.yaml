@@ -21,9 +21,4 @@
     - light.living_sofa_ceiling
     - light.living_sofa_cornerstand
     - light.living_table_ceiling
-
-# Bureau
-- platform: group
-  name: office
-  entities:
-    - light.office_ceiling
+    - light.living_table_cornerstand

@@ -17,6 +17,9 @@
       state: 'on'
       profile: chill
     light.living_table_ceiling: off
+    light.living_table_cornerstand:
+      state: 'on'
+      profile: chill
 
 - name: living_night
   entities:

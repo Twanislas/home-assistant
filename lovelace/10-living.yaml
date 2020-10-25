@@ -54,6 +54,9 @@
             - type: 'custom:slider-entity-row'
               entity: light.living_table_ceiling
               toggle: true
+            - type: 'custom:slider-entity-row'
+              entity: light.living_table_cornerstand
+              toggle: true
 
     # Media players
     - type: vertical-stack
