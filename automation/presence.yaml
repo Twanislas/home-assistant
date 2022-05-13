@@ -1,72 +1,76 @@
-- alias: Presence - Everyone left
+- id: presence_left
+  alias: presence_left
   trigger:
-    platform: state
-    entity_id: group.all_persons
-    from: 'home'
+    platform: numeric_state
+    entity_id: zone.home
+    below: 1
+  condition: "{{ states('input_boolean.guest_mode') == 'off' }}"
   action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.alarme
+      data:
+        code: !secret alarm_code
     - service: light.turn_off
       entity_id: all
     - service: media_player.turn_off
-      entity_id: group.all_media_players
-    # - service: alarm_control_panel.alarm_arm_away
-    #   entity_id: alarm_control_panel.alarme
-    #   data:
-    #     code: !secret alarm_code
-    - condition: template # Do not set heating away if it is in manual off
-      value_template: "{{ states('climate.living_thermostat') != 'off' }}"
-    - service: climate.set_preset_mode
-      data:
-        entity_id: all
-        preset_mode: away
+      entity_id: all
+    - choose:
+        - alias: "Do not set heating away if it is in manual off"
+          conditions: "{{ states('climate.living_thermostat') != 'off' }}"
+          sequence:
+            - service: climate.set_preset_mode
+              data:
+                entity_id: all
+                preset_mode: away
 
-- alias: Presence - Anyone home
+- id: presence_arrived
+  alias: presence_arrived
   trigger:
-    platform: state
-    entity_id: group.all_persons
-    to: 'home'
+    platform: numeric_state
+    entity_id: zone.home
+    above: 0
+  condition: "{{ states('input_boolean.guest_mode') == 'off' }}"
   action:
-    - service: light.turn_on
-      entity_id: light.living
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.alarme
+      data:
+        code: !secret alarm_code
+    - service: script.lights_welcome
+    - choose:
+        - alias: "Do not turn on heating if it is in manual off"
+          conditions: "{{ states('climate.living_thermostat') != 'off' }}"
+          sequence:
+            - service: climate.set_preset_mode
+              data:
+                entity_id: climate.living_thermostat
+                preset_mode: Schedule
+    - delay: 10
     - service: script.play_classic21
       data:
-        entity_id: media_player.living_mibox_cast
-    # - service: alarm_control_panel.alarm_disarm
-    #   entity_id: alarm_control_panel.alarme
-    #   data:
-    #     code: !secret alarm_code
-    - condition: template # Do not turn on heating if it is in manual off
-      value_template: "{{ states('climate.living_thermostat') != 'off' }}"
-    - service: climate.set_preset_mode
-      data:
-        entity_id: climate.living_thermostat
-        preset_mode: Schedule
+        entity_id: media_player.house
 
-- alias: Presence - Antoine left work
+- id: presence_twan_incoming
+  alias: presence_twan_incoming
   trigger:
     platform: state
     entity_id: person.antoine
-    from: 'Travail'
-  condition:
-    - condition: state
-      entity_id: group.all_persons
-      state: 'home'
+    from: "Travail"
+  condition: "{{ states('zone.home') | int > 0 or states('input_boolean.guest_mode') == 'on' }}"
   action:
-    - service: script.tts_notify
-      data_template:
-        entity_id: group.all_tts
-        message: "Youpie ! Antoine vient de quitter le travail ! Il devrait arriver dans {{ states('sensor.waze_twan_to_home') | string }} minutes."
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: "Youpie ! Antoine vient de démarrer ! Il devrait arriver dans {{ states('sensor.waze_twan_to_home') | string }} minutes."
 
-- alias: Presence - Caro left work
+- id: presence_caro_incoming
+  alias: presence_caro_incoming
   trigger:
     platform: state
     entity_id: person.caroline
-    from: 'CMAH'
-  condition:
-    - condition: state
-      entity_id: group.all_persons
-      state: 'home'
+    from: "CMAH"
+  condition: "{{ states('zone.home') | int > 0 or states('input_boolean.guest_mode') == 'on' }}"
   action:
-    - service: script.tts_notify
-      data_template:
-        entity_id: group.all_tts
-        message: "Youpie ! Caro vient de quitter les cours ! Elle devrait arriver dans {{ states('sensor.waze_caro_to_home') | string }} minutes."
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: "Youpie ! Caro vient de démarrer ! Elle devrait arriver dans {{ states('sensor.waze_caro_to_home') | string }} minutes."

@@ -1,6 +1,0 @@
-manual_presence:
-  name: Manual presence
-  options:
-    - not_home
-    - home
-  icon: mdi:home-import-outline

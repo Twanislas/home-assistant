@@ -1,0 +1,70 @@
+- title: Datacenter
+  icon: "mdi:server"
+  path: datacenter
+  badges: []
+  cards:
+    - type: grid
+      columns: 2
+      square: false
+      cards:
+        - type: "custom:mini-graph-card"
+          name: Température
+          align_state: center
+          align_header: center
+          # show:
+          #   icon: false
+          points_per_hour: 2
+          hour24: true
+          entities:
+            - sensor.dc_climate_temperature
+        - type: "custom:mini-graph-card"
+          name: Humidité
+          align_state: center
+          align_header: center
+          # show:
+          #   icon: false
+          points_per_hour: 2
+          hour24: true
+          entities:
+            - sensor.dc_climate_humidity
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: grid
+          columns: 2
+          square: false
+          cards:
+            - type: "custom:mini-graph-card"
+              name: Puissance
+              align_state: center
+              align_header: center
+              points_per_hour: 2
+              hour24: true
+              entities:
+                - sensor.dc_pdu01_power
+            - type: "custom:mini-graph-card"
+              name: Consommation
+              align_state: center
+              align_header: center
+              show:
+                graph: bar
+              hour24: true
+              aggregate_func: delta
+              group_by: hour
+              entities:
+                - sensor.dc_pdu01_energy
+        - type: entities
+          entities:
+            - sensor.dc_pdu01_energy_daily_cost
+            - sensor.dc_pdu01_energy_monthly_cost
+    - type: "custom:auto-entities"
+      show_empty: false
+      show_header_toggle: false
+      entities:
+        - switch.adguard_protection
+      card:
+        type: entities
+        title: AdGuard
+      filter:
+        include:
+          - domain: sensor
+            entity_id: "*adguard_*"

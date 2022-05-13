@@ -1,0 +1,74 @@
+notify_audio:
+  alias: Audio notification
+  description: Notify using an audio file
+  fields:
+    entity_id:
+      description: Target entity id
+      example: media_player.google_mini
+    volume_level:
+      description: "[optional] Float for volume level. Range 0..1"
+      example: "0.15"
+    url:
+      description: URL of a file to play
+      example: https://hassio.local/local/sounds/doorbell.mp3
+  sequence:
+    - service: scene.create
+      data:
+        scene_id: notify_audio_before
+        snapshot_entities: "{{ expand(entity_id) | map(attribute='entity_id') | list }}"
+    - choose:
+        - conditions: "{{ volume_level is defined }}"
+          sequence:
+            - service: media_player.volume_set
+              data:
+                entity_id: "{{ entity_id }}"
+                volume_level: "{{ volume_level }}"
+    - service: media_player.play_media
+      data:
+        entity_id: "{{ entity_id }}"
+        media_content_id: "{{ url }}"
+        media_content_type: music
+    - wait_template: "{{ states(entity_id) in ['playing','on'] }}"
+      timeout: 5
+    - wait_template: "{{ states(entity_id) not in ['playing','on'] }}"
+      timeout: 30
+    - service: scene.turn_on
+      data:
+        entity_id: scene.notify_audio_before
+
+notify_tts:
+  alias: TTS notification
+  description: Notify using TTS
+  fields:
+    entity_id:
+      description: Target entity id
+      example: media_player.google_mini
+    volume_level:
+      description: "[optional] Float for volume level. Range 0..1"
+      example: "0.15"
+    message:
+      description: Message to say
+      example: Robert arrived home
+  sequence:
+    - service: scene.create
+      data:
+        scene_id: notify_tts_before
+        snapshot_entities: "{{ expand(entity_id) | map(attribute='entity_id') | list }}"
+    - choose:
+        - conditions: "{{ volume_level is defined }}"
+          sequence:
+            - service: media_player.volume_set
+              data:
+                entity_id: "{{ entity_id }}"
+                volume_level: "{{ volume_level }}"
+    - service: tts.cloud_say
+      data:
+        entity_id: "{{ entity_id }}"
+        message: "{{ message }}"
+    - wait_template: "{{ states(entity_id) in ['playing','on'] }}"
+      timeout: 5
+    - wait_template: "{{ states(entity_id) not in ['playing','on'] }}"
+      timeout: 30
+    - service: scene.turn_on
+      data:
+        entity_id: scene.notify_tts_before

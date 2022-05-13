@@ -1,117 +1,73 @@
-- title: Living
-  icon: mdi:sofa
-  path: living
+- title: Salon
+  path: room-living
+  icon: "mdi:sofa"
+  badges: []
   cards:
-
-    # Living lights + scenes buttons
-    - type: vertical-stack
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: glance
+        columns: 3
+      filter:
+        include:
+          - domain: scene
+            attributes:
+              "entity_id:0": "*living*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: this.entity_id
+                  transition: 2
+          - domain: script
+            entity_id: "*living*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: this.entity_id
+    - type: light
+      entity: light.living
+      name: " "
+      icon: mdi:lightbulb
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: entities
+      filter:
+        include:
+          - domain: media_player
+            entity_id: "*living*"
+            options:
+              type: "custom:mini-media-player"
+              artwork: none
+              group: true
+              hide:
+                source: true
+        exclude:
+          - domain: media_player
+            entity_id: "*cast*"
+    - type: "custom:vertical-stack-in-card"
       cards:
-        - type: light
-          entity: light.living
-        - type: horizontal-stack
-          cards:
-            - type: entity-button
-              entity: scene.living_bright
-              show_name: false
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.living_bright
-            - type: entity-button
-              entity: scene.living_chill
-              show_name: false
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.living_chill
-            - type: entity-button
-              entity: scene.living_evening
-              show_name: false
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.living_evening
-            - type: entity-button
-              entity: scene.living_night
-              show_name: false
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.living_night
-        - type: entities
-          show_header_toggle: false
+        - type: thermostat
+          entity: climate.living_thermostat
+          name: " "
+        - type: "custom:mini-graph-card"
+          points_per_hour: 2
+          hour24: true
+          line_width: 4
+          show:
+            name: false
+            icon: false
+            state: false
+            extrema: true
           entities:
-            - type: 'custom:slider-entity-row'
-              entity: light.living_sofa_ceiling
-              toggle: true
-            - type: 'custom:slider-entity-row'
-              entity: light.living_sofa_cornerstand
-              toggle: true
-            - type: 'custom:slider-entity-row'
-              entity: light.living_table_ceiling
-              toggle: true
-            - type: 'custom:slider-entity-row'
-              entity: light.living_table_cornerstand
-              toggle: true
-
-    # Media players
-    - type: vertical-stack
-      cards:
-      - type: entities
-        entities:
-        - type: 'custom:mini-media-player'
-          entity: media_player.living_mibox
-          artwork: cover
-          hide:
-            source: true
-          group: true
-          shortcuts:
-            buttons:
-              - type: script
-                name: Classic 21
-                image: /local/classic21.png
-                id: script.play_classic21
-                data:
-                  entity_id: media_player.living_mibox_cast
-      - type: entities
-        entities:
-          - switch.living_switch_tv
-          - sensor.living_switch_tv_power
-          - sensor.living_switch_tv_kwh
-
-      - type: 'custom:mini-media-player'
-        entity: media_player.living_ccu_tv
-        artwork: cover
-
-    # Climate
-    - type: vertical-stack
-      cards:
-      - type: 'custom:simple-thermostat'
-        entity: climate.living_thermostat
-        name: Chauffage
-        icon: mdi:thermometer
-        label:
-          temperature: Température
-          state: État
-        control: false
-      - type: 'custom:mini-graph-card'
-        points_per_hour: 2
-        hour24: true
-        line_width: 4
-        show:
-          name: false
-          icon: false
-          state: false
-          extrema: true
-        entities:
-          - sensor.living_netatmo_temperature
-          - entity: sensor.sun_elevation
-            color: gray
-            show_line: false
-            show_points: false
-            show_legend: false
-            y_axis: secondary
+            - sensor.living_netatmo_temperature
+            - entity: sensor.sun_elevation
+              color: gray
+              show_line: false
+              show_points: false
+              show_legend: false
+              y_axis: secondary

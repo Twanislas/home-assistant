@@ -1,0 +1,38 @@
+living_classic21:
+  alias: Classic 21
+  icon: mdi:radio
+  sequence:
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.living_ghhub
+        volume_level: 0.45
+
+living_going_to_bed:
+  alias: Routine on monte
+  icon: mdi:stairs-up
+  description: Prepares the house when we go uptairs for the night
+  sequence:
+    - service: media_player.turn_off
+      data:
+        entity_id:
+          - media_player.living_gtv
+    - service: light.turn_on
+      entity_id:
+        - light.living
+        - light.veranda
+      data:
+        transition: 15
+        profile: chill
+    # - service: light.turn_on
+    #   entity_id: light.bedroom
+    #   data:
+    #     profile: chill
+    # - service: media_player.turn_on
+    #   entity_id: media_player.bedroom_mibox
+    - delay: 00:05
+    - service: light.turn_off
+      entity_id:
+        - light.living
+        - light.office
+        - light.streamlights
+        - light.veranda

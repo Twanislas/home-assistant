@@ -1,129 +1,138 @@
 - title: Systeme
-  icon: 'mdi:pulse'
+  icon: "mdi:pulse"
   path: system
   cards:
-    - type: vertical-stack
+    - type: entities
+      title: Status
+      entities:
+        - entity: sensor.hass_uptime
+        - entity: sensor.last_boot
+        - entity: binary_sensor.updater
+        - entity: sensor.hacs
+        - entity: sensor.backup_state
+        - entity: binary_sensor.backups_stale
+        - entity: sensor.zigbee2mqtt_state
+        - entity: sensor.zigbee2mqtt_version2
+        - entity: sensor.zigbee2mqtt_firmware
+    - type: "custom:vertical-stack-in-card"
+      title: Load
       cards:
-        - type: entities
-          title: WAN
-          show_header_toggle: false
+        - type: grid
+          columns: 3
+          cards:
+            - type: "custom:mini-graph-card"
+              name: 1m
+              align_state: center
+              align_header: center
+              show:
+                icon: false
+              points_per_hour: 2
+              hour24: true
+              entities:
+                - sensor.load_1m
+            - type: "custom:mini-graph-card"
+              name: 5m
+              align_state: center
+              align_header: center
+              show:
+                icon: false
+              points_per_hour: 2
+              hour24: true
+              entities:
+                - sensor.load_5m
+            - type: "custom:mini-graph-card"
+              name: 15m
+              align_state: center
+              align_header: center
+              show:
+                icon: false
+              points_per_hour: 2
+              hour24: true
+              entities:
+                - sensor.load_15m
+        - type: grid
+          columns: 2
+          square: false
+          cards:
+            - type: "custom:mini-graph-card"
+              name: CPU
+              align_state: center
+              align_header: center
+              show:
+                icon: false
+              points_per_hour: 2
+              hour24: true
+              entities:
+                - sensor.processor_use
+            - type: "custom:mini-graph-card"
+              name: Memory
+              align_state: center
+              align_header: center
+              show:
+                icon: false
+              points_per_hour: 2
+              hour24: true
+              entities:
+                - sensor.memory_use_percent
+    - type: "custom:vertical-stack-in-card"
+      title: Storage
+      cards:
+        - type: grid
+          columns: 2
+          square: false
+          cards:
+            - type: gauge
+              entity: sensor.disk_use_percent
+              name: Disk
+            - type: gauge
+              entity: sensor.swap_use_percent
+              name: Swap
+    - type: "custom:vertical-stack-in-card"
+      title: Network
+      cards:
+        - type: glance
+          columns: 2
           entities:
-            - entity: binary_sensor.ping_internet
-        - type: 'custom:mini-graph-card'
-          name: Ping 1.1.1.1
+            - entity: binary_sensor.internet
+              name: Internet
+            - entity: sensor.connected_clients
+        - type: "custom:mini-graph-card"
+          align_state: center
+          align_header: center
+          show:
+            icon: false
           points_per_hour: 2
           hour24: true
-          line_width: 4
           entities:
-            - sensor.ping_internet
-        - type: entities
-          title: PiHole
-          show_header_toggle: false
-          icon: mdi:pi-hole
-          entities:
-            - script.disable_pihole
-            - sensor.pihole_dns_queries_today
-            - sensor.pihole_ads_blocked_today
-            - sensor.pihole_ads_percentage_blocked_today
-            - sensor.pihole_dns_queries_cached
-            - sensor.pihole_dns_queries_percentage_cached
-    - cards:
-        - entities:
-            - entity: binary_sensor.ups_online_status
-            - entity: sensor.ups_time_left
-          show_header_toggle: false
-          title: UPS
-          type: entities
-        - cards:
-            - detail: 2
-              entity: sensor.ups_battery
-              graph: line
-              name: Battery
-              type: gauge
-            - detail: 2
-              entity: sensor.ups_load
-              graph: line
-              name: Load
-              type: gauge
-          type: horizontal-stack
-        - cards:
-            - entities:
-                - sensor.ups_input_voltage
-              name: Voltage IN
-              type: 'custom:mini-graph-card'
-            - entities:
-                - sensor.ups_output_power
-              name: Power OUT
-              type: 'custom:mini-graph-card'
-          type: horizontal-stack
-      type: vertical-stack
-    - cards:
-        - entities:
-            - entity: sensor.connected_clients
-            - entity: binary_sensor.updater
-            - entity: sensor.hacs
-            - entity: sensor.last_boot
-          show_header_toggle: false
-          title: HASS
-          type: entities
-        - entities:
-            - entity: sensor.load_1m
-            - entity: sensor.load_5m
-            - entity: sensor.load_15m
-          name: Load
-          points_per_hour: 2
-          type: 'custom:mini-graph-card'
-        - cards:
-            - entities:
-                - sensor.processor_use
-              font_size: 75
-              name: CPU
-              points_per_hour: 2
-              type: 'custom:mini-graph-card'
-            - entities:
-                - sensor.memory_use_percent
-              font_size: 75
-              name: Memory
-              points_per_hour: 2
-              type: 'custom:mini-graph-card'
-          type: horizontal-stack
-        - inner:
-            entity: sensor.swap_use_percent
-            label: Swap
-          outer:
-            entity: sensor.disk_use_percent
-            label: Disk
-          title: Storage
-          type: 'custom:dual-gauge-card'
-        - entities:
             - entity: sensor.network_throughput_out_eth0
-              name: OUT
+              name: Tx
             - entity: sensor.network_throughput_in_eth0
-              name: IN
-          font_size: 75
-          name: Network throughput
-          points_per_hour: 2
-          type: 'custom:mini-graph-card'
-        - cards:
-            - aggregate_func: max
+              name: Rx
+        - type: grid
+          columns: 2
+          square: false
+          cards:
+            - type: "custom:mini-graph-card"
+              name: Tx traffic
+              align_state: center
+              align_header: center
+              show:
+                icon: false
+                graph: bar
+              hour24: true
+              aggregate_func: delta
+              group_by: hour
               entities:
                 - sensor.network_out_eth0
-              font_size: 75
-              group_by: hour
-              name: Traffic OUT
-              points_per_hour: 1
+            - type: "custom:mini-graph-card"
+              name: Rx traffic
+              align_state: center
+              align_header: center
               show:
+                icon: false
                 graph: bar
-              type: 'custom:mini-graph-card'
-            - aggregate_func: max
+              hour24: true
+              aggregate_func: delta
+              group_by: hour
               entities:
                 - sensor.network_in_eth0
-              font_size: 75
-              group_by: hour
-              name: Traffic IN
-              points_per_hour: 1
-              show:
-                graph: bar
-              type: 'custom:mini-graph-card'
-          type: horizontal-stack
-      type: vertical-stack

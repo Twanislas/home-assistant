@@ -1,32 +1,182 @@
-- id: '1597425632630'
-  alias: Bedroom lights on
-  description: ''
+- id: '1608064983650'
+  alias: Sonette
+  description: Declenchement sonette
   trigger:
-  - device_id: 526e2d7222984ee6baafc0ba9319135e
-    discovery_id: 0x0017880102d5b7f2 action_on-press
+  - platform: device
     domain: mqtt
-    platform: device
-    subtype: on-press
+    device_id: 16c2311e83a1fd36abebb1374eaa0ab1
     type: action
-  condition: []
+    subtype: vibration
+    discovery_id: 0x00158d000586ab89 action_vibration
+  - platform: device
+    device_id: 89fb164ae8e8aa9a2dd08795c0e50aba
+    domain: nest
+    type: doorbell_chime
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 9195a010c6c7c13bfd60ff5a2243360b
+    entity_id: binary_sensor.hall0_contact_entrydoor_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
   action:
-  - data: {}
-    entity_id: light.bedroom
-    service: light.turn_on
+  - service: script.doorbell_ring
+    data: {}
+  - delay: 00:00:15
   mode: single
-- id: '1597426295138'
-  alias: Bedroom lights off
+- id: '1627060786145'
+  alias: '[Interrupteur] Cuisine'
+  description: ''
+  use_blueprint:
+    path: twanislas/mqtt-philips-hue-dimmer-switch.yaml
+    input:
+      dimmer: sensor.living_lightswitch_action
+      light:
+        device_id: ba29a4c13f844cc2d3bce57b1c23057d
+- id: '1627066165218'
+  alias: '[AutoLumière] Hall rez'
+  description: ''
+  use_blueprint:
+    path: twanislas/mqtt-philips-hue-motion-sensor.yaml
+    input:
+      modect: binary_sensor.hall0_modect_occupancy
+      light:
+        entity_id: light.hall0_bulb_ceiling
+- id: '1628182041461'
+  alias: '[AutoLumière] Allumage salon'
+  description: Allume les lumières dans le salon au coucher du soleil
+  trigger:
+  - platform: numeric_state
+    entity_id: sun.sun
+    attribute: elevation
+    below: '7'
+  condition:
+  - condition: numeric_state
+    entity_id: zone.home
+    above: '0'
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: light.living
+      state: 'off'
+    - condition: numeric_state
+      entity_id: light.living
+      attribute: brightness
+      below: '127'
+  action:
+  - service: light.turn_on
+    target:
+      entity_id: light.living
+    data:
+      transition: 600
+      profile: default
+  mode: single
+- id: '1628276977776'
+  alias: '[AutoLumière] Allumage véranda'
+  description: Allume les lumières dans la véranda au coucher du soleil
+  trigger:
+  - platform: numeric_state
+    entity_id: sun.sun
+    attribute: elevation
+    below: '3'
+  condition:
+  - condition: numeric_state
+    entity_id: zone.home
+    above: '0'
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: light.veranda
+      state: 'off'
+    - condition: numeric_state
+      entity_id: light.veranda
+      attribute: brightness
+      below: '127'
+  action:
+  - service: light.turn_on
+    data:
+      transition: 600
+      profile: default
+    target:
+      entity_id: light.veranda
+  mode: single
+- id: '1641397061400'
+  alias: '[AutoLumière] Extinction véranda'
+  description: Eteint les lumières dans la véranda au lever du soleil
+  trigger:
+  - platform: numeric_state
+    entity_id: sun.sun
+    attribute: elevation
+    above: '3'
+  condition:
+  - condition: numeric_state
+    entity_id: zone.home
+    above: '0'
+  - condition: state
+    entity_id: light.veranda
+    state: 'on'
+  action:
+  - service: light.turn_off
+    target:
+      area_id: veranda
+    data:
+      transition: 600
+  mode: single
+- id: '1648389329783'
+  alias: '[Interrupteur] Salle de bain'
+  description: ''
+  use_blueprint:
+    path: twanislas/mqtt-philips-hue-smart-button.yaml
+    input:
+      button: sensor.bathroom_lightswitch_action
+      light:
+        entity_id: light.bathroom
+- id: '1649796028597'
+  alias: '[AutoLumière] Salle de bain'
+  description: ''
+  use_blueprint:
+    path: twanislas/mqtt-philips-hue-motion-sensor.yaml
+    input:
+      modect: binary_sensor.bathroom_modect_occupancy
+      light:
+        entity_id: light.bathroom
+      timeout: 300
+      illuminance: 15
+- id: '1651439161133'
+  alias: '[AutoLumière] Guirlande jardin'
   description: ''
   trigger:
-  - device_id: 526e2d7222984ee6baafc0ba9319135e
-    discovery_id: 0x0017880102d5b7f2 action_off-press
-    domain: mqtt
-    platform: device
-    subtype: off-press
-    type: action
-  condition: []
+  - platform: numeric_state
+    entity_id:
+    - sensor.chemin_person
+    - sensor.chemin_car
+    above: '0'
+  condition:
+  - condition: sun
+    after: sunset
+  - condition: state
+    entity_id: light.outside_garden_stringlights
+    state: 'off'
   action:
-  - data: {}
-    entity_id: light.bedroom
-    service: light.turn_off
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.outside_garden_stringlights
+  - wait_for_trigger:
+    - platform: numeric_state
+      entity_id:
+      - sensor.chemin_person
+      - sensor.chemin_car
+      for:
+        hours: 0
+        minutes: 1
+        seconds: 0
+      below: '1'
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.outside_garden_stringlights
   mode: single

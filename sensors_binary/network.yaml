@@ -1,4 +1,4 @@
 - platform: ping
   host: 1.0.0.1
-  name: ping_internet
-  scan_interval: 15
+  name: internet
+  scan_interval: 10

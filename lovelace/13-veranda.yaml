@@ -1,3 +1,84 @@
-- title: Veranda
+- title: Véranda
   icon: mdi:flower
-  path: veranda
+  path: room-veranda
+  cards:
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: glance
+        columns: 3
+      filter:
+        include:
+          - domain: scene
+            attributes:
+              "entity_id:0": "*veranda*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: this.entity_id
+                  transition: 2
+          - domain: script
+            entity_id: "*veranda*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: this.entity_id
+    - type: light
+      entity: light.veranda
+      icon: mdi:lightbulb
+      name: " "
+    - type: "custom:mini-graph-card"
+      name: Température
+      align_state: center
+      align_header: center
+      show:
+        icon: false
+      points_per_hour: 2
+      hour24: true
+      entities:
+        - sensor.veranda_climate_temperature
+        - entity: sensor.sun_elevation
+          color: gray
+          show_line: false
+          show_points: false
+          show_legend: false
+          y_axis: secondary
+    - type: grid
+      columns: 2
+      cards:
+        - type: "custom:mini-graph-card"
+          name: Humidité
+          align_state: center
+          align_header: center
+          show:
+            icon: false
+          points_per_hour: 2
+          hour24: true
+          entities:
+            - sensor.veranda_climate_humidity
+            - entity: sensor.sun_elevation
+              color: gray
+              show_line: false
+              show_points: false
+              show_legend: false
+              y_axis: secondary
+        - type: "custom:mini-graph-card"
+          name: Pression
+          align_state: center
+          align_header: center
+          show:
+            icon: false
+          points_per_hour: 2
+          hour24: true
+          entities:
+            - sensor.veranda_climate_pressure
+            - entity: sensor.sun_elevation
+              color: gray
+              show_line: false
+              show_points: false
+              show_legend: false
+              y_axis: secondary

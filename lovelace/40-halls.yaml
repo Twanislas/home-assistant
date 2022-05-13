@@ -1,28 +1,49 @@
 - title: Halls
   icon: mdi:stairs
-  path: halls
+  path: room-hall
   cards:
-
-    # Lights
-    - type: vertical-stack
-      cards:
-        - type: light
-          entity: light.hall
-        - type: entities
-          show_header_toggle: false
-          entities:
-            - type: 'custom:slider-entity-row'
-              entity: light.hall0_ceiling
-              toggle: true
-            - type: 'custom:slider-entity-row'
-              entity: light.hall1_ceiling
-              toggle: true
+    - type: light
+      entity: light.hall
+      name: " "
+      icon: mdi:lightbulb
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: entities
+      filter:
+        include:
+          - domain: automation
+            entity_id: "*hall*"
 
     # Motion
-    - type: entities
+    - type: "custom:vertical-stack-in-card"
       title: Mouvement
-      entities:
-        - automation.hall_lights_downstairs_auto_on
-        - automation.hall_lights_upstairs_auto_on
-        - binary_sensor.hall0_modect1_motion
-        - binary_sensor.hall1_modect1_motion
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: binary_sensor.hall0_modect_occupancy
+              name: Rez
+            # - entity: binary_sensor.hall1_modect_occupancy
+            #   name: Étage
+
+    # Light levels
+    - type: grid
+      columns: 2
+      square: false
+      cards:
+        - type: "custom:mini-graph-card"
+          name: Rez
+          points_per_hour: 2
+          hour24: true
+          line_width: 4
+          entities:
+            - sensor.hall0_modect_illuminance_lux
+        # - type: "custom:mini-graph-card"
+        #   name: Étage
+        #   points_per_hour: 2
+        #   hour24: true
+        #   line_width: 4
+        #   unit: lx
+        #   entities:
+        #     - sensor.hall1_motion_illuminance

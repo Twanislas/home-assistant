@@ -1,3 +1,37 @@
 - title: Buanderie
   icon: mdi:washing-machine
   path: laundryroom
+  cards:
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: entities
+          entities:
+            - switch.laundryroom_boiler
+        - type: "custom:mini-graph-card"
+          align_state: center
+          line_width: 1
+          show:
+            name: false
+            icon: false
+          points_per_hour: 12
+          hour24: true
+          entities:
+            - sensor.laundryroom_boiler_power
+    - type: "custom:mini-graph-card"
+      name: Lave-linge
+      icon: mdi:washing-machine
+      align_state: center
+      line_width: 1
+      points_per_hour: 12
+      hour24: true
+      entities:
+        - sensor.laundryroom_washer_power
+    - type: "custom:mini-graph-card"
+      name: Sèche-linge
+      icon: mdi:tumble-dryer
+      align_state: center
+      line_width: 1
+      points_per_hour: 12
+      hour24: true
+      entities:
+        - sensor.laundryroom_dryer_power

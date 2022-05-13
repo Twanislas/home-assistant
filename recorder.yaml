@@ -1,6 +1,10 @@
-db_url: mysql://homeassistant:password@core-mariadb/homeassistant?charset=utf8
-purge_keep_days: 7
+# TODO: refresh this to lower load on the system and discard some unneeded stuff
+# https://www.home-assistant.io/integrations/recorder/
+
+db_url: mysql://homeassistant:password@core-mariadb/homeassistant?charset=utf8mb4
+commit_interval: 0
+
 exclude:
   entities:
-    - sensor.date_time
     - sensor.time
+    - sensor.date_time_iso

@@ -1,16 +1,9 @@
 doorbell_ring:
   alias: Sonette
-  description: Fait sonner la sonette
+  icon: mdi:doorbell
   sequence:
-    - service: script.tts_notify
+    - service: notify.tvs
       data:
-        entity_id: group.all_tts
+        title: 🔔 Sonette
         message: Quelqu'un sonne a la porte !
-    - service: notify.all
-      data:
-        title: Sonette
-        message: Quelqu'un sonne a la porte !
-        data:
-          ttl: 0
-          priority: high
-    - delay: 00:00:15
+    - delay: 10

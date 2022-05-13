@@ -1,0 +1,88 @@
+# Camera alerts
+- id: camera_alert
+  alias: camera_alert
+  trigger:
+    platform: mqtt
+    topic: frigate/events
+    payload: "new"
+    value_template: "{{ value_json['type'] }}"
+  action:
+    - variables:
+        id: "{{ trigger.payload_json['after']['id'] }}"
+        camera: "{{ trigger.payload_json['after']['camera'] }}"
+        label: "{{ trigger.payload_json['after']['label'] }}"
+    - service: notify.alarm
+      data:
+        title: "{{ camera }}"
+        message: >
+          {% if label == "person" %}
+            Personne détectée
+          {%- elif label == "car" %}
+            Voiture détectée
+          {%- elif label == "cat" %}
+            Chat détecté
+          {%- elif label == "dog" %}
+            Chien détecté
+          {%- else -%}
+            {{ label | title }} détecté
+          {%- endif %}
+        data:
+          tag: "{{ id }}"
+          group: "alarm-camera-alert-{{ camera }}"
+          # Android Specific
+          image: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/thumbnail.jpg?format=android&bbox=1"
+          clickAction: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/clip.mp4"
+          alert_once: true
+          notification_icon: "mdi:cctv"
+          channel: "Alarme (alerte)"
+          # Actions
+          actions:
+            - action: URI
+              title: Clip
+              uri: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/clip.mp4"
+            - action: URI
+              title: Snapshot
+              uri: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/snapshot.jpg"
+    - repeat:
+        sequence:
+          - wait_for_trigger:
+              - platform: mqtt
+                topic: frigate/events
+                payload: "{{ id }}"
+                value_template: "{{ value_json['after']['id'] }}"
+            timeout:
+              minutes: 5
+            continue_on_timeout: false
+          - service: notify.alarm
+            data:
+              title: "{{ camera }}"
+              message: >
+                {% if label == "person" %}
+                  Personne détectée
+                {%- elif label == "car" %}
+                  Voiture détectée
+                {%- elif label == "cat" %}
+                  Chat détecté
+                {%- elif label == "dog" %}
+                  Chien détecté
+                {%- else -%}
+                  {{ label | title }} détecté
+                {%- endif %}
+              data:
+                tag: "{{ id }}"
+                group: "alarm-camera-alert-{{ camera }}"
+                # Android Specific
+                image: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/thumbnail.jpg?format=android&bbox=1"
+                clickAction: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/clip.mp4"
+                alert_once: true
+                notification_icon: "mdi:cctv"
+                channel: "Alarme (alerte)"
+                # Actions
+                actions:
+                  - action: URI
+                    title: Clip
+                    uri: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/clip.mp4"
+                  - action: URI
+                    title: Snapshot
+                    uri: "https://hassio.twan.ovh/api/frigate/notifications/{{ id }}/snapshot.jpg"
+        until: "{{ not wait.trigger or wait.trigger.payload_json['type'] == 'end' }}"

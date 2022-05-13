@@ -1,0 +1,32 @@
+- title: Exterieur
+  icon: mdi:home-export-outline
+  path: room-outside
+  cards:
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: glance
+        columns: 3
+      filter:
+        include:
+          - domain: scene
+            attributes:
+              "entity_id:0": "*outside*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: this.entity_id
+                  transition: 2
+          - domain: script
+            entity_id: "*outside*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: this.entity_id
+    - type: light
+      entity: light.outside
+      name: " "

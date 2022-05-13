@@ -1,42 +1,42 @@
-# Groups
-- name: all
-  platform: group
-  services:
-    - service: apps
-    - service: html5
-    - service: phones
-    - service: tvs
-
-- name: apps
-  platform: group
-  services:
-    - service: mobile_app_twan_mbp
-
-- name: phones
-  platform: group
-  services:
-    - service: mobile_app_iphone_de_caroline
-    - service: mobile_app_twan_phone
-
-- name: tvs
-  platform: group
-  services:
-    - service: bedroom_mibox
-    - service: living_mibox
-
-# Services
-- name: html5
+# HTML5 browser notifications
+- name: browsers
   platform: html5
   vapid_pub_key: !secret vapid_pub_key
   vapid_prv_key: !secret vapid_prv_key
   vapid_email: !secret vapid_email
 
-- name: living_mibox
-  platform: nfandroidtv
-  host: 10.0.6.6
-  duration: 15
+# All
+- name: all
+  platform: group
+  services:
+    - service: browsers
+    - service: phones
+    - service: tvs
 
-- name: bedroom_mibox
-  platform: nfandroidtv
-  host: 10.0.6.7
-  duration: 15
+# Phones
+- name: phones
+  platform: group
+  services:
+    - service: mobile_app_caro_phone
+    - service: mobile_app_twan_phone
+
+# Alarm
+- name: alarm
+  platform: group
+  services:
+    - service: phones
+      data:
+        data:
+          color: red
+          importance: max
+          ledColor: "red"
+          sticky: true
+          ttl: 0
+          priority: high
+
+# TVs
+- name: tvs
+  platform: group
+  services:
+    # - service: bedroom_tv
+    - service: living_tv

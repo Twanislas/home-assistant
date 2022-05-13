@@ -1,0 +1,61 @@
+blueprint:
+  name: Philips Hue Dimmer Switch (MQTT)
+  description: Control lights with your Hue Dimmer Switch
+  domain: automation
+  input:
+    dimmer:
+      name: Hue Dimmer Switch
+      description: Choose the "action" entity of your remote
+      selector:
+        entity:
+          multiple: true
+          integration: mqtt
+          domain: sensor
+    light:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+
+mode: single
+max_exceeded: silent
+
+trigger:
+  platform: state
+  entity_id: !input dimmer
+
+action:
+  - choose:
+      - conditions: "{{ trigger.to_state.state == 'on-press' }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light
+      - conditions: "{{ trigger.to_state.state == 'off-press' }}"
+        sequence:
+          - service: light.turn_off
+            target: !input light
+      - conditions: "{{ trigger.to_state.state == 'down-press' or trigger.to_state.state == 'down-hold' }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light
+            data:
+              brightness_step_pct: -10
+      - conditions: "{{ trigger.to_state.state == 'up-press' or trigger.to_state.state == 'up-hold' }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light
+            data:
+              brightness_step_pct: 10
+      - conditions: "{{ trigger.to_state.state == 'on-hold' }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light
+            data:
+              brightness: 255
+      - conditions: "{{ trigger.to_state.state == 'off-hold' }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light
+            data:
+              brightness: 1

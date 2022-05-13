@@ -1,0 +1,10 @@
+alarm_triggered:
+  name: Déclenchement alarme
+  entity_id: alarm_control_panel.alarme
+  state: triggered
+  title: 🛡️ Alarme 🚨
+  message: Alarme déclenchée !
+  done_message: Alarme OK
+  repeat: 1
+  notifiers:
+    - alarm

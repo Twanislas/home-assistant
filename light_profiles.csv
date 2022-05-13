@@ -1,10 +1,7 @@
 id,x,y,brightness,transition
-group.all_lights.default,0.457,0.41,254,1
-light.living.default,0.457,0.41,254,1
-light.bedroom.default,0.457,0.41,254,1
-light.hall.default,0.457,0.41,254,1
-default,0.457,0.41,254,1
-bright,0.457,0.41,254,1
+default,0.457,0.41,255,1
+light.streamlights.default,0.457,0.41,0,1
+bright,0.457,0.41,255,1
 chill,0.457,0.41,144,1
 evening,0.457,0.41,77,1
-night,0.561,0.404,2,2
+night,0.561,0.404,1,2

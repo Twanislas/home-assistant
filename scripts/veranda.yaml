@@ -1,0 +1,8 @@
+veranda_classic21:
+  alias: Classic 21
+  icon: mdi:radio
+  sequence:
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.veranda_ghhub
+        volume_level: 0.3

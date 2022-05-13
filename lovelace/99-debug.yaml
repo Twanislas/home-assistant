@@ -1,8 +1,0 @@
-- title: DEBUG
-  icon: 'mdi:bug'
-  path: debug
-  badges: []
-  cards:
-    - type: entities
-      entities:
-        - input_select.manual_presence

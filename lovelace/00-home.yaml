@@ -1,111 +1,73 @@
 - title: Home
-  icon: mdi:castle
-  path: home
+  path: "home"
+  icon: "mdi:castle"
+  badges:
+    - entity: person.antoine
+    - entity: person.caroline
+    - entity: input_boolean.guest_mode
+    - entity: proximity.home
   cards:
-
-    # Lights
-    - type: horizontal-stack
-      cards:
-      - type: entity-button
-        entity: light.living
-        state_color: true
-        hold_action:
-          action: navigate
-          navigation_path: /lovelace/living
-      - type: entity-button
-        entity: light.bedroom
-        state_color: true
-        hold_action:
-          action: navigate
-          navigation_path: /lovelace/bedroom
-
-    # Playing media players
-    - type: vertical-stack
-      cards:
-        - type: entity-filter
-          show_empty: false
-          state_filter:
-            - playing
-            - paused
-          entities:
-            - type: 'custom:mini-media-player'
-              entity: media_player.living_cca_radio
-              artwork: cover
-              group: true
-              hide:
-                power_state: false
-                source: true
-                volume: true
-            - type: 'custom:mini-media-player'
-              entity: media_player.living_mibox
-              artwork: cover
-              group: true
-              hide:
-                power_state: false
-                source: true
-                volume: true
-            - type: 'custom:mini-media-player'
-              entity: media_player.bedroom_mibox
-              artwork: cover
-              group: true
-              hide:
-                power_state: false
-                source: true
-                volume: true
-    
-    # Package tracking
-    - type: entity-filter
-      show_empty: false
-      state_filter:
-        - operator: '>'
-          value: '0'
+    - type: glance
+      show_state: false
       entities:
-        - entity: sensor.seventeentrack_packages_delivered
-          secondary_info: last-changed
-        - entity: sensor.seventeentrack_packages_in_transit
-          secondary_info: last-changed
-    
-    # Climate
-    - type: vertical-stack
+        - entity: script.classic_21_maison
+          tap_action:
+            action: call-service
+            service: script.classic_21_maison
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: entities
+      filter:
+        include:
+          - domain: media_player
+            state: playing
+            options:
+              type: "custom:mini-media-player"
+              artwork: none
+              group: true
+              hide:
+                source: true
+        exclude:
+          - domain: media_player
+            entity_id: "*cast*"
+          - domain: media_player
+            entity_id: media_player.house
+    - type: grid
+      columns: 2
       cards:
-        - type: 'custom:simple-weather-card'
-          entity: weather.accuweather
-          name: ' '
-        - type: 'custom:simple-thermostat'
-          entity: climate.living_thermostat
-          name: Thermostat
-          icon: mdi:home-thermometer-outline
-          hide:
-            temperature: true
-          label:
-            state: État
-          sensors:
-            - entity: sensor.house_temperature
-              name: T° moy.
-              unit: °C
-            - attribute: battery_level
-              name: Batterie
-              unit: ' %'
-          control:
-            hvac:
-              'off': true
-              heat: false
-              auto: true
-            preset:
-              away:
-                icon: mdi:home-export-outline
-              boost: false
-              'Frost Guard':
-                name: Hors gel
-                icon: mdi:snowflake
-              Schedule:
-                name: Programme
-                icon: mdi:calendar-sync
-    
+        - type: light
+          entity: light.living
+          hold_action:
+            action: navigate
+            navigation_path: room-living
+        - type: light
+          entity: light.kitchen
+          hold_action:
+            action: navigate
+            navigation_path: room-kitchen
+        - type: light
+          entity: light.office
+          hold_action:
+            action: navigate
+            navigation_path: room-office
+        - type: light
+          entity: light.veranda
+          hold_action:
+            action: navigate
+            navigation_path: room-veranda
     # Trash
-    - type: entities
+    - type: glance
       entities:
         - entity: sensor.trash_restafval
         - entity: sensor.trash_pmd
-        - entity: sensor.trash_papier
-      title: Poubelles
+
+    # Packages
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: glance
+      filter:
+        include:
+          - entity_id: sensor.seventeentrack_packages_*
+            state: "> 0"

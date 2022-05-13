@@ -1,0 +1,22 @@
+classic_21_maison:
+  alias: Classic 21 (maison)
+  sequence:
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.house
+      data:
+        media_content_id: media-source://radio_browser/0af512c6-eae5-4875-a206-302dc6a12a64
+        media_content_type: audio/mpeg
+      metadata:
+        title: Classic 21
+        thumbnail: http://www.rtbfmedia.be/logo-rtbf/classic21/logo/COULEUR/LOGO_CL21_RVB_15.png
+        media_class: music
+        children_media_class:
+        navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://radio_browser
+          - media_content_type: music
+            media_content_id: media-source://radio_browser/country/BE
+  mode: single
+  icon: mdi:radio

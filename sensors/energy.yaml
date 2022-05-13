@@ -1,0 +1,14 @@
+- platform: template
+  sensors:
+    dc_pdu01_power:
+      unique_id: dc_pdu01_power
+      value_template: "{{ states('sensor.snmp_pdu01_power') }}"
+      unit_of_measurement: W
+      device_class: power
+
+- platform: snmp
+  name: snmp_pdu01_power
+  host: pdu01.i
+  baseoid: 1.3.6.1.4.1.1718.3.1.6.0
+  accept_errors: true
+  unit_of_measurement: W

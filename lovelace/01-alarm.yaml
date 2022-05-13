@@ -1,0 +1,28 @@
+- title: Alarme
+  path: alarm
+  icon: mdi:shield-home
+  badges: []
+  cards:
+    - type: alarm-panel
+      entity: alarm_control_panel.alarme
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: entities
+      filter:
+        include:
+          - domain: binary_sensor
+            entity_id: "*entrydoor*"
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: vertical-stack
+      card_param: cards
+      filter:
+        include:
+          - domain: camera
+            attributes:
+              supported_features: "> 0"
+            options:
+              type: picture-entity
+              show_state: false

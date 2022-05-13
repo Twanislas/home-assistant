@@ -17,3 +17,27 @@
     - type: load_5m
     - type: load_15m
     - type: last_boot
+
+- platform: time_date
+  display_options:
+    - date_time_iso
+    - time
+
+- platform: uptime
+  name: HASS Uptime
+
+# https://www.home-assistant.io/integrations/websocket_api/#track-current-connections
+- platform: websocket_api
+
+# ZigBee2MQTT
+- platform: mqtt
+  unique_id: zigbee2mqtt_state
+  state_topic: "zigbee2mqtt/bridge/state"
+- platform: mqtt
+  unique_id: zigbee2mqtt_version
+  state_topic: "zigbee2mqtt/bridge/config"
+  value_template: "{{ value_json.version }}"
+- platform: mqtt
+  unique_id: zigbee2mqtt_firmware
+  state_topic: "zigbee2mqtt/bridge/config"
+  value_template: "{{ value_json.coordinator.meta.revision }}"

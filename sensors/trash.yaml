@@ -2,13 +2,10 @@
   wastecollector: RecycleApp
   resources:
     - restafval
-    - papier
     - pmd
   postcode: !secret trash_postcode
   streetname: !secret trash_streetname
   streetnumber: !secret trash_streetnumber
-  dateformat: "%Y-%m-%d"
-  dateonly: 1
   disableicons: 1
   dateobject: 1
   upcomingsensor: 1

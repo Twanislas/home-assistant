@@ -1,13 +1,11 @@
-# Alarmm clock based on phone next alarm
-- alias: alarmclock
+- id: bedroom_alarmclock
+  alias: bedroom_alarmclock
   trigger:
     - platform: template
-      value_template: >-
-        {% set dummy = states("sensor.time") %}
-        {{ ((utcnow() | as_timestamp) | int) == (((states('sensor.app_twanphone_next_alarm') | as_timestamp) - 60*15) | int) }}
+      value_template: "{{ (states('sensor.date_time_iso') | as_timestamp | timestamp_local) == ((states('sensor.twan_phone_next_alarm') | as_timestamp - 60*15) | timestamp_local) }}"
   condition:
     - condition: state
       entity_id: person.antoine
-      state: 'home'
+      state: "home"
   action:
-    - service: script.alarmclock
+    - service: script.bedroom_alarmclock

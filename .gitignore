@@ -1,13 +1,17 @@
 # Files/Folders with personal details or unneeded
 .cloud
 .google.token
+.google_fit.token
 .HA_VERSION
 .storage
 .uuid
 .vscode
+google_calendars.yaml
 home-assistant_v2.db*
 home-assistant.db*
 html5_push_registrations.conf
+image/
+nest/
 options.xml
 pyozw.sqlite
 secrets.yaml
@@ -27,7 +31,7 @@ lib
 www
 
 # Log files
-home-assistant.log
+home-assistant.log*
 OZW_Log.txt
 
 # Development files

@@ -1,0 +1,84 @@
+blueprint:
+  name: Philips Hue Motion Sensor (MQTT, with light profiles)
+  description: Control lights with your Hue Motion Sensor
+  domain: automation
+  input:
+    modect:
+      name: Hue Motion Sensor
+      selector:
+        entity:
+          multiple: true
+          integration: mqtt
+          domain: binary_sensor
+          device_class: motion
+    light:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+    sun:
+      name: Sun
+      default: sun.sun
+      selector:
+        entity:
+          domain: sun
+    illuminance:
+      name: Illuminance level (in lux)
+      default: 4
+      selector:
+        number:
+          min: 0
+          max: 15
+          mode: slider
+    timeout:
+      name: Light timeout
+      description: Time to leave the light on after last motion is detected.
+      default: 180
+      selector:
+        number:
+          min: 0
+          max: 3600
+          unit_of_measurement: seconds
+    # TODO: Settings for profiles / time ?
+
+mode: restart
+max_exceeded: silent
+
+trigger:
+  platform: state
+  entity_id: !input modect
+  to: "on"
+
+condition:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: !input sun
+        state: below_horizon
+      - condition: numeric_state
+        entity_id: !input modect
+        attribute: illuminance_lux
+        below: !input illuminance
+
+action:
+  - service: light.turn_on
+    target: !input light
+    data:
+      profile: >
+        {% if states('sensor.time') >= "23:00" or states('sensor.time') <= "01:00" -%}
+          evening
+        {%- elif states('sensor.time') > "01:00" and states('sensor.time') < "07:00" -%}
+          night
+        {%- else -%}
+          default
+        {%- endif %}
+  - wait_for_trigger:
+      - platform: state
+        entity_id: !input modect
+        to: "off"
+        for: !input timeout
+  - service: light.turn_off
+    target: !input light
+    data:
+      transition: 5

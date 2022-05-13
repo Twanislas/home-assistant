@@ -1,10 +1,75 @@
 - title: Bureau
   icon: mdi:desk
-  path: office
+  path: room-office
   cards:
-
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: glance
+        columns: 3
+      filter:
+        include:
+          - domain: scene
+            attributes:
+              "entity_id:0": "*office*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: this.entity_id
+                  transition: 2
+          - domain: script
+            entity_id: "*office*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: this.entity_id
+    - type: light
+      entity: light.office
+      name: " "
+      icon: mdi:lightbulb
+    - type: light
+      entity: light.streamlights
+      name: Streamlights
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: entities
+      filter:
+        include:
+          - domain: media_player
+            entity_id: "*office*"
+            options:
+              type: "custom:mini-media-player"
+              artwork: none
+              group: true
+              hide:
+                source: true
+        exclude:
+          - domain: media_player
+            entity_id: "*cast*"
     - type: entities
       show_header_toggle: false
       entities:
         - switch.office_twan_pc
         - switch.office_caro_pc
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: entities
+          entities:
+            - entity: sensor.hp_deskjet_3070_b611_series
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: glance
+            columns: 4
+          filter:
+            include:
+              - domain: sensor
+                entity_id: "*deskjet*ink*"
+        - type: entities
+          entities:
+            - entity: sensor.brother_pt_p750w

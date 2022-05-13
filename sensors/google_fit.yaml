@@ -1,0 +1,4 @@
+- platform: google_fit
+  name: Antoine
+  client_id: !secret google_fit_client_id
+  client_secret: !secret google_fit_client_secret

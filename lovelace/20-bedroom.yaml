@@ -1,68 +1,108 @@
-- title: Chambre
-  icon: mdi:bed-king
-  path: bedroom
-  cards:
-
-    # Lights + scenes buttons
-    - type: vertical-stack
-      cards:
-        - type: light
-          entity: light.bedroom
-        - type: horizontal-stack
-          cards:
-            - type: entity-button
-              entity: scene.bedroom_bright
-              show_name: false
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.bedroom_bright
-            - type: entity-button
-              entity: scene.bedroom_chill
-              show_name: false
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.bedroom_chill
-            - type: entity-button
-              entity: scene.bedroom_night
-              show_name: false
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.bedroom_night
-        - type: entities
-          show_header_toggle: false
-          entities:
-            - type: 'custom:slider-entity-row'
-              entity: light.bedroom_tvbackdrop
-              toggle: true
-            - type: 'custom:slider-entity-row'
-              entity: light.bedroom_wall
-              toggle: true
-
-    # Media players
-    - type: vertical-stack
-      cards:
-      - type: 'custom:mini-media-player'
-        entity: media_player.bedroom_mibox
-        artwork: cover
-        shortcuts:
-          buttons:
-            - type: script
-              name: Classic 21
-              image: /local/classic21.png
-              id: script.play_classic21
-              data:
-                entity_id: media_player.bedroom_mibox_cast
-    
-    # Alarm clock
-    - type: entities
-      title: Réveil matin
-      show_header_toggle: false
-      entities:
-        - automation.alarmclock
-        - sensor.app_twanphone_next_alarm
+# - title: Chambre
+#   path: room-bedroom
+#   icon: "mdi:bed-king"
+#   badges: []
+#   cards:
+#     - type: "custom:auto-entities"
+#       show_empty: false
+#       card:
+#         type: glance
+#         columns: 3
+#       filter:
+#         include:
+#           - domain: scene
+#             attributes:
+#               "entity_id:0": "*bedroom*"
+#             options:
+#               show_state: false
+#               tap_action:
+#                 action: call-service
+#                 service: scene.turn_on
+#                 service_data:
+#                   entity_id: this.entity_id
+#                   transition: 2
+#           - domain: script
+#             entity_id: "*bedroom*"
+#             options:
+#               show_state: false
+#               tap_action:
+#                 action: call-service
+#                 service: this.entity_id
+#     - type: light
+#       entity: light.bedroom
+#       name: " "
+#       icon: mdi:lightbulb
+#     - type: "custom:auto-entities"
+#       show_empty: false
+#       card:
+#         type: entities
+#       filter:
+#         include:
+#           - domain: media_player
+#             entity_id: "*bedroom*"
+#             options:
+#               type: "custom:mini-media-player"
+#               artwork: none
+#               group: true
+#               hide:
+#                 source: true
+#         exclude:
+#           - domain: media_player
+#             entity_id: "*cast*"
+#     - type: entities
+#       title: Réveil matin
+#       show_header_toggle: false
+#       entities:
+#         - automation.bedroom_alarmclock
+#         - sensor.twan_phone_next_alarm
+#     - type: "custom:mini-graph-card"
+#       name: Température
+#       align_state: center
+#       align_header: center
+#       show:
+#         icon: false
+#       points_per_hour: 2
+#       hour24: true
+#       entities:
+#         - sensor.bedroom_climate_temperature
+#         - entity: sensor.sun_elevation
+#           color: gray
+#           show_line: false
+#           show_points: false
+#           show_legend: false
+#           y_axis: secondary
+#     - type: grid
+#       columns: 2
+#       cards:
+#         - type: "custom:mini-graph-card"
+#           name: Humidité
+#           align_state: center
+#           align_header: center
+#           show:
+#             icon: false
+#           points_per_hour: 2
+#           hour24: true
+#           entities:
+#             - sensor.bedroom_climate_humidity
+#             - entity: sensor.sun_elevation
+#               color: gray
+#               show_line: false
+#               show_points: false
+#               show_legend: false
+#               y_axis: secondary
+#         - type: "custom:mini-graph-card"
+#           name: Pression
+#           align_state: center
+#           align_header: center
+#           show:
+#             icon: false
+#           points_per_hour: 2
+#           hour24: true
+#           entities:
+#             - sensor.bedroom_climate_pressure
+#             - entity: sensor.sun_elevation
+#               color: gray
+#               show_line: false
+#               show_points: false
+#               show_legend: false
+#               y_axis: secondary

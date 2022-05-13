@@ -1,7 +1,7 @@
 # WoL Twan-PC
 - platform: wake_on_lan
   name: office_twan_pc
-  mac: "BC:AE:C5:59:34:6F"
+  mac: "A4:AE:11:14:F6:3C"
   host: 10.0.7.1
   broadcast_address: 10.0.7.253
   turn_off:

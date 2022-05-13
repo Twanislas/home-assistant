@@ -1,8 +1,0 @@
-- name: twan_work
-  latitude: !secret zone_twan_work_latitude
-  longitude: !secret zone_twan_work_longitude
-  radius: 550
-- name: caro_work
-  latitude: !secret zone_caro_work_latitude
-  longitude: !secret zone_caro_work_longitude
-  radius: 100

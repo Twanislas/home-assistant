@@ -1,77 +1,128 @@
-# - alias: 'Trigger alarm while armed away'
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.capteur_couloir_bas_motion
-#       to: 'on'
-#     - platform: state
-#       entity_id: binary_sensor.capteur_couloir_haut_motion
-#       to: 'on'
-#   condition:
-#     - condition: state
-#       entity_id: alarm_control_panel.alarme
-#       state: armed_away
-#   action:
-#     service: alarm_control_panel.alarm_trigger
-#     entity_id: alarm_control_panel.alarme
+- id: alarm_trigger_away
+  alias: alarm_trigger_away
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrydoors
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.alarme
+      state: armed_away
+  action:
+    service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.alarme
 
-# - alias: 'Send notification when alarm triggered'
-#   trigger:
-#     - platform: state
-#       entity_id: alarm_control_panel.alarme
-#       to: 'triggered'
-#   action:
-#     - service: notify.all
-#       data:
-#         message: "ALARME DELENCHEE !!!"
-#     - service: tts.google_cloud_say
-#       entity_id: group.all_tts
-#       data:
-#         message: "ALARME CA VA EXPLOSER !"
-#     # Add lights alert
-#     # Make phones ring ?
+- id: alarm_trigger_home
+  alias: alarm_trigger_home
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrydoors
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.alarme
+      state: armed_home
+  action:
+    service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.alarme
 
-# - alias: 'Warn about alarm about to trigger'
-#   trigger:
-#     - platform: state
-#       entity_id: alarm_control_panel.alarme
-#       from: 'arm_away'
-#       to: 'pending'
-#   action:
-#     - service: tts.google_cloud_say
-#       entity_id: group.all_tts
-#       data:
-#         message: "Attention ! L'alarme se déclenchera dans une minute !"
+- id: alarm_notify_triggered
+  alias: alarm_notify_triggered
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarme
+      to: "triggered"
+  action:
+    - service: notify.alarm
+      data:
+        title: 🛡️ Alarme 🚨
+        message: Alarme déclenchée !
+        data:
+          channel: Alarme (alerte)
+          tag: alarme
+          group: alarm
+          notification_icon: "mdi:shield-home"
+          clickAction: "/lovelace/alarm"
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: ATTENTION ! Alarme déclenchée !
+        volume: 1
+    - service: light.turn_on
+      entity_id: all
 
-# - alias: 'Warn about alarm about to arm'
-#   trigger:
-#     - platform: state
-#       entity_id: alarm_control_panel.alarme
-#       from: 'disarmed'
-#       to: 'pending'
-#   action:
-#     - service: tts.google_cloud_say
-#       entity_id: group.all_tts
-#       data:
-#         message: "Attention ! L'alarme va s'armer dans une minute !"
+- id: alarm_notify_pending_trigger
+  alias: alarm_notify_pending_trigger
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarme
+      from:
+        - "armed_away"
+        - "armed_home"
+      to: "pending"
+  action:
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: "Attention ! L'alarme se déclenchera dans une minute !"
+        volume: 0.6
 
-# - alias: 'Warn about alarm is armed'
-#   trigger:
-#     - platform: state
-#       entity_id: alarm_control_panel.alarme
-#       to: 'armed_away'
-#   action:
-#     - service: tts.google_cloud_say
-#       entity_id: group.all_tts
-#       data:
-#         message: "Attention ! L'alarme est activée !"
+- id: alarm_notify_arming
+  alias: alarm_notify_arming
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarme
+      from: "disarmed"
+      to: "arming"
+  action:
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: "Attention ! L'alarme va s'armer dans une minute !"
+        volume: 0.6
 
-# - alias: 'Warn about alarm is disarmed'
-#   trigger:
-#     - platform: state
-#       entity_id: alarm_control_panel.alarme
-#       to: 'disarmed'
-#   action:
-#     - service: tts.google_cloud_say
-#       entity_id: group.all_tts
-#       data:
-#         message: "Attention ! L'alarme est désactivée !"
+- id: alarm_notify_armed
+  alias: alarm_notify_armed
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarme
+      to:
+        - "armed_away"
+        - "armed_home"
+  action:
+    - service: notify.alarm
+      data:
+        title: 🛡️ Alarme 🔒
+        message: Armée
+        data:
+          channel: Alarme (statut)
+          tag: alarme
+          group: alarm
+          notification_icon: "mdi:shield-home"
+          clickAction: "/lovelace/alarm"
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: "Attention ! L'alarme est activée !"
+
+- id: alarm_notify_disarmed
+  alias: alarm_notify_disarmed
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarme
+      to: "disarmed"
+  action:
+    - service: notify.alarm
+      data:
+        title: 🛡️ Alarme 🔓
+        message: Désarmée
+        data:
+          channel: Alarme (statut)
+          tag: alarme
+          group: alarm
+          notification_icon: "mdi:shield-home"
+          clickAction: "/lovelace/alarm"
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: "Attention ! L'alarme est désactivée !"

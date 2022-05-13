@@ -1,0 +1,33 @@
+- title: Energie
+  icon: "mdi:transmission-tower"
+  path: energy
+  badges: []
+  cards:
+    - type: "custom:vertical-stack-in-card"
+      title: Puissance
+      cards:
+        - type: gauge
+          entity: sensor.power_consumed
+          max: 9.2
+          name: " "
+        - type: history-graph
+          hours_to_show: 24
+          entities:
+            - sensor.power_consumed_phase_1
+            - sensor.power_consumed_phase_2
+            - sensor.power_consumed_phase_3
+
+    - type: history-graph
+      title: "Voltage"
+      hours_to_show: 24
+      entities:
+        - sensor.voltage_phase_1
+        - sensor.voltage_phase_2
+        - sensor.voltage_phase_3
+    - type: history-graph
+      title: "Courant"
+      hours_to_show: 24
+      entities:
+        - sensor.current_phase_1
+        - sensor.current_phase_2
+        - sensor.current_phase_3

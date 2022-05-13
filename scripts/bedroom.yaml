@@ -1,0 +1,66 @@
+bedroom_alarmclock:
+  alias: Réveil matin
+  icon: mdi:weather-sunset-up
+  sequence:
+    # - service: script.bedroom_sunrise_lights
+    - delay: 00:14:50
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.house
+    - delay: 00:10
+    - service: script.notify_tts
+      data:
+        entity_id: media_player.house
+        message: Il est l'heure de se lever !
+    - delay: 6
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.house
+
+bedroom_sunrise_lights:
+  alias: Lever de soleil
+  icon: mdi:weather-sunset-up
+  sequence:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - service: scene.turn_on
+      data:
+        entity_id: scene.bedroom_bright
+        transition: 1200
+
+bedroom_sunset_lights:
+  alias: Coucher de soleil
+  icon: mdi:weather-sunset-down
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.bedroom_chill
+        transition: 10
+    - delay: 15
+    - service: light.turn_off
+      data:
+        entity_id: light.bedroom
+        transition: 900
+
+bedroom_classic21:
+  alias: Classic 21
+  icon: mdi:radio
+  sequence:
+    - service: script.play_classic21
+      data:
+        entity_id: media_player.bedroom_ghmini
+
+bedroom_going_downstairs:
+  alias: Routine on descend
+  icon: mdi:stairs-down
+  sequence:
+    - service: light.turn_off
+      data:
+        entity_id: light.bedroom
+        transition: 10
+    - service: media_player.turn_off
+      data:
+        entity_id:
+          - media_player.bedroom_mibox
+          - media_player.bedroom_ghmini

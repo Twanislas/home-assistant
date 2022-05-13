@@ -1,59 +1,35 @@
-- alias: Trash - Poubelles
+- id: trash_waste
+  alias: trash_waste
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == '20:00' }}"
   condition:
-    - condition: state
-      entity_id: group.all_persons
-      state: 'home'
-    - condition: template
-      value_template: "{{ 'restafval' in states('sensor.trash_morgen') }}"
+    - "{{ states('zone.home') | int > 0 or states('input_boolean.guest_mode') == 'on' }}"
+    - "{{ 'restafval' in states('sensor.trash_morgen') }}"
   action:
-    - service: script.tts_notify
+    - service: script.notify_tts
       data:
-        entity_id: group.all_tts
-        message: Il faut sortir les poubelles !
+        entity_id: media_player.house
+        message: Il faut sortir les poubelles.
     - service: notify.all
       data:
-        title: Poubelles
-        message: Il faut sortir les poubelles !
+        title: 🚮 Poubelles
+        message: 🗑️ Il faut sortir les poubelles
 
-- alias: Trash - PMC
+- id: trash_recycle
+  alias: trash_recycle
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == '20:01' }}"
   condition:
-    - condition: state
-      entity_id: group.all_persons
-      state: 'home'
-    - condition: template
-      value_template: "{{ 'pmd' in states('sensor.trash_morgen') }}"
+    - "{{ states('zone.home') | int > 0 or states('input_boolean.guest_mode') == 'on' }}"
+    - "{{ 'pmd' in states('sensor.trash_morgen') }}"
   action:
-    - service: script.tts_notify
+    - service: script.notify_tts
       data:
-        entity_id: group.all_tts
-        message: Il faut sortir les PMC !
+        entity_id: media_player.house
+        message: Il faut sortir les recyclables.
     - service: notify.all
       data:
-        title: Poubelles
-        message: Il faut sortir les PMC !
-
-- alias: Trash - Cartons
-  trigger:
-    - platform: template
-      value_template: "{{ states('sensor.time') == '20:02' }}"
-  condition:
-    - condition: state
-      entity_id: group.all_persons
-      state: 'home'
-    - condition: template
-      value_template: "{{ 'papier' in states('sensor.trash_morgen') }}"
-  action:
-    - service: script.tts_notify
-      data:
-        entity_id: group.all_tts
-        message: Il faut sortir les cartons !
-    - service: notify.all
-      data:
-        title: Poubelles
-        message: Il faut sortir les cartons !
+        title: 🚮 Poubelles
+        message: ♻️ Il faut sortir les recyclables

@@ -1,2 +1,839 @@
-# Scenes created with HA UI
-[]
+- id: '1603655788877'
+  name: Détente
+  entities:
+    light.living_bulb_sofacorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 175
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606065912358
+      linkquality: 249
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salon
+      icon: mdi:floor-lamp
+      supported_features: 63
+    light.living_bulb_sofaceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 77
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606065912760
+      linkquality: 249
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salon
+      icon: mdi:ceiling-light
+      supported_features: 63
+    light.living_bulb_tablecorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 162
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606065913160
+      linkquality: 249
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salle à manger
+      icon: mdi:floor-lamp
+      supported_features: 63
+    light.living_bulb_tableceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 253
+      color:
+        x: 0.457
+        y: 0.41
+      color_temp: 2252
+      last_seen: 1606064844187
+      linkquality: 249
+      state: 'off'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salle à manger
+      icon: mdi:ceiling-light
+      supported_features: 63
+  icon: mdi:seat-recline-extra
+- id: '1603655899922'
+  name: Soirée
+  entities:
+    light.living_bulb_sofacorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 64
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606066084526
+      linkquality: 250
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salon
+      icon: mdi:floor-lamp
+      supported_features: 63
+    light.living_bulb_sofaceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 77
+      color:
+        x: 0.457
+        y: 0.41
+      color_temp: 2252
+      last_seen: 1606066083317
+      linkquality: 250
+      state: 'off'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salon
+      icon: mdi:ceiling-light
+      supported_features: 63
+    light.living_bulb_tablecorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 115
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606066084926
+      linkquality: 250
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salle à manger
+      icon: mdi:floor-lamp
+      supported_features: 63
+    light.living_bulb_tableceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 253
+      color:
+        x: 0.457
+        y: 0.41
+      color_temp: 2252
+      last_seen: 1606066084121
+      linkquality: 250
+      state: 'off'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salle à manger
+      icon: mdi:ceiling-light
+      supported_features: 63
+  icon: mdi:theater
+- id: '1606066923614'
+  name: Détente
+  entities:
+    light.bedroom_bulb_tvbackdrop:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 143
+      color_temp: 500
+      last_seen: 1606066845009
+      linkquality: 250
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Backdrop TV chambre
+      icon: mdi:television-ambient-light
+      supported_features: 47
+    light.bedroom_bulb_wall:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 143
+      last_seen: 1606066844610
+      linkquality: 250
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Éventail chambre
+      icon: mdi:string-lights
+      supported_features: 47
+  icon: mdi:seat-recline-extra
+- id: '1606067060369'
+  name: Lumineux
+  entities:
+    light.bedroom:
+      min_mireds: 153
+      max_mireds: 500
+      brightness: 254
+      color_temp: 500
+      friendly_name: Chambre
+      supported_features: 43
+      icon: mdi:bed-king
+      state: 'on'
+  icon: mdi:lightbulb-on
+- id: '1606067137945'
+  name: Veilleuse
+  entities:
+    light.bedroom_bulb_tvbackdrop:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 2
+      color_temp: 500
+      last_seen: 1606067101232
+      linkquality: 250
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Backdrop TV chambre
+      icon: mdi:television-ambient-light
+      supported_features: 47
+    light.bedroom_bulb_wall:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 2
+      last_seen: 1606067100832
+      linkquality: 250
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Éventail chambre
+      icon: mdi:string-lights
+      supported_features: 47
+  icon: mdi:weather-night
+- id: '1606125676230'
+  name: Lumineux
+  entities:
+    light.living_bulb_sofaceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 254
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606125594467
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salon
+      icon: mdi:ceiling-light
+      supported_features: 63
+    light.living_bulb_sofacorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 254
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606125594066
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salon
+      icon: mdi:floor-lamp
+      supported_features: 63
+    light.living_bulb_tableceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 254
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606125593665
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salle à manger
+      icon: mdi:ceiling-light
+      supported_features: 63
+    light.living_bulb_tablecorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 254
+      color_temp: 2252
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      color:
+        x: 0.457
+        y: 0.41
+      last_seen: 1606125593267
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salle à manger
+      icon: mdi:floor-lamp
+      supported_features: 63
+  icon: mdi:lightbulb-on
+- id: '1606125764278'
+  name: Veilleuse
+  entities:
+    light.living_bulb_sofaceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 2
+      color_temp: 411
+      hs_color:
+      - 33.803
+      - 83.529
+      rgb_color:
+      - 255
+      - 162
+      - 42
+      xy_color:
+      - 0.557
+      - 0.405
+      color:
+        x: 0.559
+        y: 0.405
+      last_seen: 1606125720436
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salon
+      icon: mdi:ceiling-light
+      supported_features: 63
+    light.living_bulb_sofacorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 2
+      color_temp: 411
+      hs_color:
+      - 33.803
+      - 83.529
+      rgb_color:
+      - 255
+      - 162
+      - 42
+      xy_color:
+      - 0.557
+      - 0.405
+      color:
+        x: 0.559
+        y: 0.405
+      last_seen: 1606125720035
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salon
+      icon: mdi:floor-lamp
+      supported_features: 63
+    light.living_bulb_tableceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 2
+      color_temp: 411
+      hs_color:
+      - 33.803
+      - 83.529
+      rgb_color:
+      - 255
+      - 162
+      - 42
+      xy_color:
+      - 0.557
+      - 0.405
+      color:
+        x: 0.559
+        y: 0.405
+      last_seen: 1606125719639
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salle à manger
+      icon: mdi:ceiling-light
+      supported_features: 63
+    light.living_bulb_tablecorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      brightness: 2
+      color_temp: 411
+      hs_color:
+      - 33.803
+      - 83.529
+      rgb_color:
+      - 255
+      - 162
+      - 42
+      xy_color:
+      - 0.557
+      - 0.405
+      color:
+        x: 0.559
+        y: 0.405
+      last_seen: 1606125719233
+      linkquality: 16
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salle à manger
+      icon: mdi:floor-lamp
+      supported_features: 63
+  icon: mdi:weather-night
+- id: '1619376140134'
+  name: Streamlights
+  entities:
+    light.office_bulb_streamlight_left:
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 102
+      color_temp: 250
+      color_temp_startup: 250
+      last_seen: '2021-05-22T21:52:52+02:00'
+      linkquality: 238
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Streamlight gauche
+      supported_features: 47
+    light.office_bulb_streamlight_face:
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 76
+      color_temp: 250
+      color_temp_startup: 250
+      last_seen: '2021-05-22T21:47:26+02:00'
+      linkquality: 238
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Streamlight face
+      supported_features: 47
+    light.office_bulb_ceiling:
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 253
+      color_temp: 250
+      color:
+        x: 0.463162860122743
+        y: 0.411314131332149
+      color_temp_startup: 370
+      last_seen: '2021-05-22T21:49:14+02:00'
+      linkquality: 238
+      state: 'on'
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Ampoule plafond bureau
+      supported_features: 47
+  icon: mdi:webcam
+- id: '1628283591873'
+  name: Dodo
+  entities:
+    light.living_bulb_tablecorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 3
+      color_temp: 500
+      hs_color:
+      - 30.601
+      - 94.547
+      rgb_color:
+      - 255
+      - 136
+      - 13
+      xy_color:
+      - 0.599
+      - 0.382
+      color:
+        x: 0.5267
+        y: 0.4133
+      linkquality: 159
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salle à manger
+      supported_features: 63
+      state: 'on'
+    light.living_bulb_sofacorner:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      - xy
+      color:
+        x: 0.5267
+        y: 0.4133
+      linkquality: 95
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Pied salon
+      supported_features: 63
+      state: 'off'
+    light.living_bulb_tableceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      - xy
+      color:
+        x: 0.457
+        y: 0.41
+      linkquality: 207
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salle à manger
+      supported_features: 63
+      state: 'off'
+    light.living_bulb_sofaceiling:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      - xy
+      color:
+        x: 0.457
+        y: 0.41
+      linkquality: 143
+      update:
+        state: idle
+      update_available: false
+      friendly_name: Plafond salon
+      supported_features: 63
+      state: 'off'
+    light.office:
+      min_mireds: 250
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      color:
+        x: 0.5056
+        y: 0.4152
+      friendly_name: Bureau
+      icon: mdi:desk
+      supported_features: 43
+      state: 'off'
+    light.veranda:
+      supported_color_modes:
+      - brightness
+      friendly_name: Véranda
+      icon: mdi:flower
+      supported_features: 41
+      state: 'off'

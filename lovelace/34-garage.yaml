@@ -1,3 +1,58 @@
 - title: Garage
   icon: mdi:garage
-  path: garage
+  path: room-garage
+  cards:
+    - type: entities
+      entities:
+        - binary_sensor.garage_contact_entrydoor_contact
+    - type: "custom:mini-graph-card"
+      name: Température
+      align_state: center
+      align_header: center
+      show:
+        icon: false
+      points_per_hour: 2
+      hour24: true
+      entities:
+        - sensor.garage_climate_temperature
+        - entity: sensor.sun_elevation
+          color: gray
+          show_line: false
+          show_points: false
+          show_legend: false
+          y_axis: secondary
+    - type: grid
+      columns: 2
+      cards:
+        - type: "custom:mini-graph-card"
+          name: Humidité
+          align_state: center
+          align_header: center
+          show:
+            icon: false
+          points_per_hour: 2
+          hour24: true
+          entities:
+            - sensor.garage_climate_humidity
+            - entity: sensor.sun_elevation
+              color: gray
+              show_line: false
+              show_points: false
+              show_legend: false
+              y_axis: secondary
+        - type: "custom:mini-graph-card"
+          name: Pression
+          align_state: center
+          align_header: center
+          show:
+            icon: false
+          points_per_hour: 2
+          hour24: true
+          entities:
+            - sensor.garage_climate_pressure
+            - entity: sensor.sun_elevation
+              color: gray
+              show_line: false
+              show_points: false
+              show_legend: false
+              y_axis: secondary

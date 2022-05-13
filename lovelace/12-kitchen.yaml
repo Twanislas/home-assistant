@@ -1,3 +1,17 @@
 - title: Cuisine
   icon: mdi:stove
-  path: kitchen
+  path: room-kitchen
+  cards:
+    - type: light
+      entity: light.kitchen
+      name: " "
+      icon: mdi:lightbulb
+    - type: "custom:mini-graph-card"
+      name: Lave-vaisselle
+      icon: mdi:dishwasher
+      align_state: center
+      line_width: 1
+      points_per_hour: 12
+      hour24: true
+      entities:
+        - sensor.kitchen_dishwasher_electric_consumption_w

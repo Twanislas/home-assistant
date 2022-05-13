@@ -3,22 +3,24 @@ play_classic21:
   description: Plays Classic21 on a media_player device
   fields:
     entity_id:
-      description: Target device
+      description: '[required] Name(s) of entities to seek media on. To target all media players, use "all".'
       example: media_player.radio
+    volume_level:
+      description: "[optional] Float for volume level. Range 0..1"
+      example: "0.15"
   sequence:
+    - choose:
+        - conditions: "{{ volume_level is defined }}"
+          sequence:
+            - service: media_player.volume_set
+              data:
+                entity_id: "{{ entity_id }}"
+                volume_level: "{{ volume_level }}"
     - service: media_player.play_media
-      data_template:
+      data:
         entity_id: "{{ entity_id }}"
         media_content_id: https://radios.rtbf.be/classic21-128.mp3
         media_content_type: music
-
-play_classic21_on_radio:
-  alias: Classic 21
-  description: Plays classic 21 on the living room radio
-  sequence:
-    - service: script.play_classic21
-      data:
-        entity_id: media_player.living_mibox_cast
 
 androidtv_launch_app:
   alias: Android TV Launch app
@@ -31,33 +33,11 @@ androidtv_launch_app:
       description: App to launch
       example: com.netflix.ninja/.MainActivity
   sequence:
-  - service: androidtv.adb_command
-    data_template:
-      entity_id: "{{ entity_id }}"
-      command: "am start -n {{ app }}"
-  - service: androidtv.adb_command
-    data_template:
-      entity_id: "{{ entity_id }}"
-      command: "RESUME"
-
-#TODO temp scene to restore volume
-#TODO poll for play end before restoring last state
-tts_notify:
-  alias: TTS Notification
-  description: Notify using TTS
-  fields:
-    entity_id:
-      description: Target entity id
-      example: media_player.google_mini
-    message:
-      description: Message to say
-      example: Robert arrived home
-  sequence:
-  - service: media_player.volume_set
-    data_template:
-      entity_id: "{{ entity_id }}"
-      volume_level: 0.3
-  - service: tts.google_cloud_say
-    data_template:
-      entity_id: "{{ entity_id }}"
-      message: "{{ message }}"
+    - service: androidtv.adb_command
+      data:
+        entity_id: "{{ entity_id }}"
+        command: "am start -n {{ app }}"
+    - service: androidtv.adb_command
+      data:
+        entity_id: "{{ entity_id }}"
+        command: "RESUME"

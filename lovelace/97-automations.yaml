@@ -1,33 +1,19 @@
 - title: Automations
-  icon: 'mdi:auto-fix'
+  icon: "mdi:auto-fix"
   path: automations
   badges: []
   cards:
-    - type: entities
-      title: Presence
-      entities:
-        - automation.presence_anyone_home
-        - automation.presence_everyone_left
-        - automation.presence_antoine_left_work
-        - automation.presence_caro_left_work
-    - type: entities
-      title: Media players
-      entities:
-        - automation.media_player_turn_off_radio_if_tv_salon_starts_playing
-    - type: entities
-      title: UPS
-      entities:
-        - automation.ups_alert_if_loss_of_power
-        - automation.ups_alert_low_battery
-    - type: entities
-      title: Poubelles
-      entities:
-        - automation.trash_poubelles
-        - automation.trash_pmc
-        - automation.trash_cartons
-    - type: entities
-      title: Systeme
-      entities:
-        - automation.ifttt_call_service
-        - automation.system_let_s_encrypt_renewal
-        - automation.system_set_custom_theme_at_startup
+    - type: "custom:auto-entities"
+      card:
+        type: entities
+        title: Automations
+      filter:
+        include:
+          - domain: automation
+    - type: "custom:auto-entities"
+      card:
+        type: entities
+        title: Scripts
+      filter:
+        include:
+          - domain: script

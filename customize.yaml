@@ -1,149 +1,17 @@
-# Automations
-automation.alarmclock:
-  friendly_name: Réveil
-  icon: mdi:alarm-check
-automation.presence_anyone_home:
-  friendly_name: Arrivée maison
-  icon: mdi:home-import-outline
-automation.presence_everyone_left:
-  friendly_name: Départ maison
-  icon: mdi:home-export-outline
-automation.presence_antoine_left_work:
-  friendly_name: Antoine quitte le travail
-automation.presence_caro_left_work:
-  friendly_name: Caro quitte les cours
-
-# Device trackers
-device_tracker.app_twanphone:
-  icon: mdi:cellphone-android
-  hidden: true
-device_tracker.app_carophone:
-  icon: mdi:cellphone-iphone
-  hidden: true
-  
-# Lights - groups
-light.hall:
-  friendly_name: Couloir
-  icon: mdi:stairs
-light.bedroom:
-  friendly_name: Chambre
-  icon: mdi:bed-king
-light.living:
-  friendly_name: Living
-  icon: mdi:sofa
-light.office:
-  friendly_name: Bureau
-  icon: mdi:desk
-
-# Media players
-media_player.bedroom_ghmini:
-  icon: mdi:google-home
-media_player.bedroom_mibox:
-  icon: mdi:television-classic
-media_player.bedroom_mibox_cast:
-  icon: mdi:television-classic
-media_player.living_ccu_tv:
-  icon: mdi:google-chrome
-media_player.living_ghhub:
-  icon: mdi:google-home
-media_player.living_mibox:
-  icon: mdi:television-classic
-media_player.living_mibox_cast:
-  icon: mdi:television-classic
-
-# Persons
-person.antoine:
-  entity_picture: /local/twan.jpg
-person.caroline:
-  entity_picture: /local/caro.jpg
-
-# Proximity
 proximity.home:
   friendly_name: Proximité maison
   icon: mdi:home-import-outline
-
-
-# Scenes
-scene.living_bright:
-  friendly_name: Lumineux
-  icon: mdi:lightbulb-on
-scene.living_evening:
-  friendly_name: Soirée
-  icon: mdi:theater
-scene.living_chill:
-  friendly_name: Détente
-  icon: mdi:seat-recline-extra
-scene.living_night:
-  friendly_name: Veilleuse
-  icon: mdi:weather-night
-scene.bedroom_bright:
-  friendly_name: Lumineux
-  icon: mdi:lightbulb-on
-scene.bedroom_chill:
-  friendly_name: Détente
-  icon: mdi:seat-recline-extra
-scene.bedroom_night:
-  friendly_name: Veilleuse
-  icon: mdi:weather-night
-
-# Scripts
-script.alarmclock:
-  friendly_name: Réveil matin
-  icon: mdi:weather-sunset-up
-script.bedroom_going_downstairs:
-  friendly_name: Routine on descend
-script.bedroom_sunset_lights:
-  friendly_name: Coucher de soleil
-  icon: mdi:weather-sunset-down
-script.disable_pihole:
-  friendly_name: Stop PiHole
-  icon: mdi:pi-hole
-script.play_classic21_on_radio:
-  icon: mdi:radio
-script.living_going_to_bed:
-  friendly_name: Routine on monte
-
-# Sensors
-sensor.1stfloor_temperature:
-  friendly_name: Température étage
-  icon: mdi:home-floor-1
-sensor.groundfloor_temperature:
-  friendly_name: Température RDC
-  icon: mdi:home-floor-0
-sensor.hall0_modect1_temperature_raw:
-  hidden: true
-sensor.hall1_modect1_temperature_raw:
-  hidden: true
 sensor.moon:
   friendly_name: Lune
-sensor.seventeentrack_packages_delivered:
-  friendly_name: Colis livrés
-  unit_of_measurement: colis
-sensor.seventeentrack_packages_in_transit:
-  friendly_name: Colis en transit
-  unit_of_measurement: colis
+sensor.season:
+  friendly_name: Saison
+sun.sun:
+  friendly_name: Soleil
 sensor.trash_restafval:
   friendly_name: Poubelles
-  icon: "mdi:trash-can"
+  icon: mdi:trash-can
 sensor.trash_pmd:
   friendly_name: PMC
-  icon: "mdi:recycle"
-sensor.trash_papier:
-  friendly_name: Cartons
-  icon: "mdi:package-variant"
-
-# Switches
-switch.office_twan_pc:
-  friendly_name: Twan-PC
-  icon: mdi:desktop-tower-monitor
-switch.office_caro_pc:
-  friendly_name: Caro-PC
-  icon: mdi:desktop-tower-monitor
-
-# Zones
-zone.caro_work:
-  friendly_name: CMAH
-  icon: mdi:school
-zone.twan_work:
-  friendly_name: Travail
-  icon: mdi:briefcase
+  icon: mdi:recycle
+zone.home:
+  radius: 40

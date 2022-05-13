@@ -1,3 +1,61 @@
 - title: Salle de bain
   icon: mdi:shower
-  path: bathroom
+  path: room-bathroom
+  cards:
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: glance
+        columns: 3
+      filter:
+        include:
+          - domain: scene
+            attributes:
+              "entity_id:0": "*bathroom*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: this.entity_id
+                  transition: 2
+          - domain: script
+            entity_id: "*bathroom*"
+            options:
+              show_state: false
+              tap_action:
+                action: call-service
+                service: this.entity_id
+    - type: light
+      entity: light.bathroom
+      name: " "
+      icon: mdi:lightbulb
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: entities
+      filter:
+        include:
+          - domain: automation
+            entity_id: "*bathroom*"
+    - type: "custom:auto-entities"
+      show_empty: false
+      card:
+        type: entities
+      filter:
+        include:
+          - domain: media_player
+            entity_id: "*bathroom*"
+            options:
+              type: "custom:mini-media-player"
+              artwork: none
+              group: true
+              hide:
+                source: true
+        exclude:
+          - domain: media_player
+            entity_id: "*cast*"
+    - type: entities
+      entities:
+        - binary_sensor.bathroom_modect_occupancy

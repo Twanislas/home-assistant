@@ -1,0 +1,150 @@
+- title: Lumières
+  path: lights
+  icon: "mdi:lightbulb-group"
+  badges: []
+  cards:
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: light
+          entity: light.living
+          hold_action:
+            action: navigate
+            navigation_path: room-living
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: entities
+          filter:
+            include:
+              - domain: light
+                entity_id: "*living_*"
+                options:
+                  type: "custom:slider-entity-row"
+                  toggle: true
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: light
+          entity: light.kitchen
+          hold_action:
+            action: navigate
+            navigation_path: room-kitchen
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: entities
+          filter:
+            include:
+              - domain: light
+                entity_id: "*kitchen_*"
+                options:
+                  type: "custom:slider-entity-row"
+                  toggle: true
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: light
+          entity: light.veranda
+          hold_action:
+            action: navigate
+            navigation_path: room-veranda
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: entities
+          filter:
+            include:
+              - domain: light
+                entity_id: "*veranda_*"
+                options:
+                  type: "custom:slider-entity-row"
+                  toggle: true
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: light
+          entity: light.office
+          hold_action:
+            action: navigate
+            navigation_path: room-office
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: entities
+          filter:
+            include:
+              - domain: light
+                entity_id: "*office_*"
+                options:
+                  type: "custom:slider-entity-row"
+                  toggle: true
+    # TEMP Disable
+    # - type: "custom:vertical-stack-in-card"
+    #   cards:
+    #     - type: light
+    #       entity: light.bedroom
+    #       hold_action:
+    #         action: navigate
+    #         navigation_path: room-bedroom
+    #     - type: "custom:auto-entities"
+    #       show_empty: false
+    #       card:
+    #         type: entities
+    #       filter:
+    #         include:
+    #           - domain: light
+    #             entity_id: "*bedroom_*"
+    #             options:
+    #               type: "custom:slider-entity-row"
+    #               toggle: true
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: light
+          entity: light.bathroom
+          hold_action:
+            action: navigate
+            navigation_path: room-bathroom
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: entities
+          filter:
+            include:
+              - domain: light
+                entity_id: "*bathroom*_*"
+                options:
+                  type: "custom:slider-entity-row"
+                  toggle: true
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: light
+          entity: light.hall
+          hold_action:
+            action: navigate
+            navigation_path: room-hall
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: entities
+          filter:
+            include:
+              - domain: light
+                entity_id: "*hall*_*"
+                options:
+                  type: "custom:slider-entity-row"
+                  toggle: true
+    - type: "custom:vertical-stack-in-card"
+      cards:
+        - type: light
+          entity: light.outside
+          hold_action:
+            action: navigate
+            navigation_path: room-outside
+        - type: "custom:auto-entities"
+          show_empty: false
+          card:
+            type: entities
+          filter:
+            include:
+              - domain: light
+                entity_id: "*outside_*"
+                options:
+                  type: "custom:slider-entity-row"
+                  toggle: true
